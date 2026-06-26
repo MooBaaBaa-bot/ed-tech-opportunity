@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ed Tech Opportunity</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cat-a: #3B82F6;
+    --cat-b: #10B981;
+    --cat-c: #F59E0B;
+    --cat-d: #8B5CF6;
+    --cat-a-light: #EFF6FF;
+    --cat-b-light: #ECFDF5;
+    --cat-c-light: #FFFBEB;
+    --cat-d-light: #F5F3FF;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #F8FAFC;
+    color: #1E293B;
+    line-height: 1.6;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+    box-sizing: border-box;
+  }
+
+  /* ====== Header ====== */
+  .page-header {
+    text-align: center;
+    padding: 32px 20px 0;
+  }
+  .page-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1E293B;
+    letter-spacing: 0.3px;
+  }
+  .page-header .subtitle {
+    font-size: 13px;
+    color: #64748B;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+  .page-header .updated {
+    font-size: 13px;
+    color: #94A3B8;
+    margin-top: 6px;
+  }
+
+  /* ====== Stats Bar ====== */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin: 14px 0 18px;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-item .stat-num {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .stat-item .stat-num.cat-a-num { color: var(--cat-a); }
+  .stat-item .stat-num.cat-b-num { color: var(--cat-b); }
+  .stat-item .stat-num.cat-c-num { color: var(--cat-c); }
+  .stat-item .stat-num.cat-d-num { color: var(--cat-d); }
+  .stat-item .stat-label {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-top: 2px;
+  }
+
+  /* ====== Tab Bar ====== */
+  .tab-bar {
+    display: flex;
+    gap: 0;
+    margin: 0 0 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 0 4px;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748B;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.2s;
+    font-family: inherit;
+  }
+  .tab-btn:hover { color: #334155; }
+  .tab-btn.active {
+    color: #3B82F6;
+    font-weight: 600;
+  }
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 18px;
+    right: 18px;
+    height: 2px;
+    background: #3B82F6;
+    border-radius: 2px;
+  }
+  .tab-btn .tab-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+  .tab-dot.cat-a { background: var(--cat-a); }
+  .tab-dot.cat-b { background: var(--cat-b); }
+  .tab-dot.cat-c { background: var(--cat-c); }
+  .tab-dot.cat-d { background: var(--cat-d); }
+
+  .tab-divider-bar {
+    height: 1px;
+    background: #E2E8F0;
+    margin: 0 0 20px;
+  }
+
+  /* ====== Category Section ====== */
+  .category-section { display: none; }
+  .category-section.visible { display: block; }
+
+  /* ====== Batch ====== */
+  .batch-divider {
+    border: none;
+    border-top: 1px dashed #CBD5E1;
+    margin: 20px 0;
+  }
+  .batch-label {
+    font-size: 14px;
+    color: #3B82F6;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .batch-label.old { color: #94A3B8; }
+
+  /* ====== Category Header ====== */
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #F1F5F9;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border-left: 4px solid #3B82F6;
+  }
+  .category-header.cat-a { border-left-color: var(--cat-a); }
+  .category-header.cat-b { border-left-color: var(--cat-b); }
+  .category-header .cat-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .category-header .cat-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #334155;
+    flex: 1;
+  }
+  .category-header .cat-count {
+    font-size: 13px;
+    color: #94A3B8;
+    background: #fff;
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+
+  /* ====== Timeline ====== */
+  .timeline-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 2px;
+    position: relative;
+  }
+  .timeline-row.last-in-category { margin-bottom: 24px; }
+
+  .timeline-gutter {
+    flex-shrink: 0;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 4px;
+    position: relative;
+  }
+  .timeline-gutter .date {
+    font-size: 12px;
+    color: #94A3B8;
+    line-height: 1;
+  }
+  .timeline-gutter .time {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    line-height: 1;
+  }
+  .timeline-gutter .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    right: -20px;
+    top: 8px;
+    z-index: 2;
+  }
+  .dot-a { background: var(--cat-a); }
+  .dot-b { background: var(--cat-b); }
+  .dot-c { background: var(--cat-c); }
+  .dot-d { background: var(--cat-d); }
+
+  .timeline-row::after {
+    content: '';
+    position: absolute;
+    left: 88px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #E2E8F0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ====== Item Card ====== */
+  .item-card {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stars {
+    font-size: 14px;
+    color: #F59E0B;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .stars .empty { color: #CBD5E1; }
+
+  /* ====== Tags ====== */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 14px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+  /* PhD tags */
+  .tag-institution { background: #EFF6FF; color: #2563EB; }
+  .tag-degree     { background: #ECFDF5; color: #059669; }
+  .tag-mode       { background: #F3E8FF; color: #9333EA; }
+  .tag-deadline   { background: #FEF3C7; color: #D97706; }
+  .tag-field      { background: #FFEDD5; color: #EA580C; }
+  .tag-location   { background: #FCE7F3; color: #DB2777; }
+  /* Course tags */
+  .tag-platform   { background: #EFF6FF; color: #2563EB; }
+  .tag-topic      { background: #ECFDF5; color: #059669; }
+  .tag-level      { background: #F3E8FF; color: #9333EA; }
+  .tag-cert       { background: #FEF3C7; color: #D97706; }
+  .tag-format     { background: #FFEDD5; color: #EA580C; }
+  /* Incubator / Competition tags */
+  .tag-incubator  { background: #FEF3C7; color: #B45309; }
+  .tag-inc-type   { background: #FFF7ED; color: #EA580C; }
+  .tag-inc-stage  { background: #ECFDF5; color: #059669; }
+  .tag-inc-region { background: #FCE7F3; color: #DB2777; }
+  .tag-inc-field  { background: #EFF6FF; color: #2563EB; }
+  .tag-inc-prize  { background: #FEF2F2; color: #DC2626; }
+  /* Conference / CFP tags */
+  .tag-conf       { background: #F5F3FF; color: #7C3AED; }
+  .tag-cfp-type   { background: #FFF7ED; color: #EA580C; }
+  .tag-conf-topic { background: #ECFDF5; color: #059669; }
+  .tag-conf-tier  { background: #FEF3C7; color: #D97706; }
+  .tag-conf-venue { background: #FCE7F3; color: #DB2777; }
+
+  /* ====== PhD extra meta ====== */
+  .phd-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #64748B;
+  }
+  .phd-meta-row .phd-duration  { color: #059669; font-weight: 500; }
+  .phd-meta-row .phd-language  { background: #F1F5F9; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+  .phd-meta-row .phd-deadline-date { color: #DC2626; font-weight: 500; }
+
+  /* ====== Title ====== */
+  .item-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1E293B;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  /* ====== Summary ====== */
+  .item-summary {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  /* ====== Highlight Box ====== */
+  .item-highlight {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #166534;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .item-highlight.phd { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }
+
+  /* ====== PhD Detail Section (学费/奖学金/导师) ====== */
+  .phd-detail-section {
+    margin-top: 12px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .phd-detail-card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .phd-detail-card .detail-label {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-bottom: 4px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .phd-detail-card .detail-value {
+    font-size: 13px;
+    color: #334155;
+    font-weight: 500;
+  }
+  .phd-detail-card .detail-sub {
+    font-size: 11px;
+    color: #64748B;
+    margin-top: 2px;
+  }
+  @media (max-width: 600px) {
+    .phd-detail-section {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+  .item-highlight.incubator { background: #FFFBEB; border-color: #FDE68A; color: #92400E; }
+  .item-highlight.conf { background: #F5F3FF; border-color: #DDD6FE; color: #5B21B6; }
+
+  /* ====== Incubator / Competition extra meta ====== */
+  .inc-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #64748B;
+  }
+  .inc-meta-row .inc-deadline { color: #DC2626; font-weight: 500; }
+  .inc-meta-row .inc-prize    { color: #D97706; font-weight: 500; }
+  .inc-meta-row .inc-format   { background: #F1F5F9; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+
+  /* ====== Conference extra meta ====== */
+  .conf-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #64748B;
+  }
+  .conf-meta-row .conf-submit   { color: #DC2626; font-weight: 500; }
+  .conf-meta-row .conf-date     { color: #7C3AED; font-weight: 500; }
+  .conf-meta-row .conf-location { background: #F1F5F9; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+
+  /* ====== Source ====== */
+  .item-source-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #94A3B8;
+  }
+  .item-source-line a {
+    color: #3B82F6;
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .item-source-line a:hover { text-decoration: underline; }
+  .item-source-name {
+    color: #64748B;
+    flex-shrink: 0;
+  }
+
+  /* ====== Footer ====== */
+  .page-footer {
+    text-align: center;
+    padding: 24px 0 8px;
+    font-size: 12px;
+    color: #94A3B8;
+    line-height: 1.8;
+    border-top: 1px solid #E2E8F0;
+    margin-top: 32px;
+  }
+
+  /* ====== Responsive ====== */
+  @media (max-width: 600px) {
+    .container { padding: 12px 10px 32px; }
+    .page-header { padding: 24px 16px 0; }
+    .page-header h1 { font-size: 20px; }
+    .tab-btn { padding: 8px 12px; font-size: 13px; }
+    .tab-btn.active::after { left: 12px; right: 12px; }
+    .timeline-gutter { width: 60px; }
+    .timeline-row::after { left: 68px; }
+    .timeline-gutter .dot { right: -12px; }
+    .timeline-row { gap: 10px; }
+    .item-card { padding: 12px 14px; }
+    .item-title { font-size: 15px; }
+    .item-summary { font-size: 13px; }
+    .category-header { padding: 10px 14px; }
+    .timeline-gutter .time { font-size: 13px; }
+    .stats-bar { gap: 20px; }
+  }
+
+  @media (max-width: 400px) {
+    .timeline-gutter { width: 50px; }
+    .timeline-row::after { left: 58px; }
+    .timeline-gutter .dot { right: -8px; }
+    .timeline-row { gap: 8px; }
+    .item-card { padding: 10px 12px; }
+    .tags { gap: 4px; }
+    .tag { font-size: 10px; padding: 2px 8px; }
+    .item-title { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ====== Header ====== -->
+  <div class="page-header">
+    <h1>Ed Tech Opportunity</h1>
+    <div class="subtitle">全球教育科技机会追踪 · 博士申请 | 免费课程 | 创业竞赛 | 学术会议</div>
+    <div class="updated">Updated: 2026-06-26 14:00</div>
+  </div>
+
+  <!-- ====== Stats Bar ====== -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num cat-a-num">14</div>
+      <div class="stat-label">在职博士机会</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num cat-b-num">12</div>
+      <div class="stat-label">免费权威课程</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num cat-c-num">10</div>
+      <div class="stat-label">创业孵化/竞赛</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num cat-d-num">10</div>
+      <div class="stat-label">学术会议/征稿</div>
+    </div>
+  </div>
+
+  <!-- ====== Tab Bar ====== -->
+  <div class="tab-bar" id="tabBar">
+    <button class="tab-btn active" data-tab="tab-a" onclick="switchTab('tab-a')">
+      <span class="tab-dot cat-a"></span>在职博士申请
+    </button>
+    <button class="tab-btn" data-tab="tab-b" onclick="switchTab('tab-b')">
+      <span class="tab-dot cat-b"></span>AI 免费权威课程
+    </button>
+    <button class="tab-btn" data-tab="tab-c" onclick="switchTab('tab-c')">
+      <span class="tab-dot cat-c"></span>创业孵化与竞赛
+    </button>
+    <button class="tab-btn" data-tab="tab-d" onclick="switchTab('tab-d')">
+      <span class="tab-dot cat-d"></span>学术会议与征稿
+    </button>
+  </div>
+  <div class="tab-divider-bar"></div>
+
+  <!-- ====== 初始批次 ====== -->
+  <div class="batch-label">🔵 初始收集 · 06-26  46 条机会</div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  TAB A · 在职博士申请                                  -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="category-section visible" id="tab-a">
+  <div class="category-header cat-a">
+    <span class="cat-icon">🎓</span>
+    <span class="cat-name">在职 / Part-time 博士申请 · AI 教育方向 · QS100 & 中国/香港 & 线上项目</span>
+    <span class="cat-count">14 个项目</span>
+  </div>
+
+  <!-- 1. UPenn -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">2026 Fall</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">宾夕法尼亚大学 (QS 13)</span>
+        <span class="tag tag-degree">EdD</span>
+        <span class="tag tag-mode">Part-time</span>
+        <span class="tag tag-field">AI教育</span>
+        <span class="tag tag-location">美国 · 在线+驻校</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">3-5 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">2026.12 截止</span>
+      </div>
+      <div class="item-title">UPenn GSE — Learning Technologies EdD（在线+短期驻校混合同步）</div>
+      <div class="item-summary">宾大教育学院旗舰在职博士，聚焦AI驱动的教育创新与学习技术。核心方向含AI in Education、学习分析、教育数据科学、生成式AI教学应用。主要在线授课+每年短期费城驻校，适合在职教育科技从业者。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 $7,500/门课</div>
+          <div class="detail-sub">总计约 $150K-$200K（含全部学分+驻校费）</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">GSE Merit Scholarship</div>
+          <div class="detail-sub">数额有限；建议同步申请外部EdTech企业资助 / 雇主报销</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">Ryan Baker (学习分析/AIED)</div>
+          <div class="detail-sub">Bodong Chen (知识建构) · Yasmin Kafai (CS教育)</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：常春藤联盟、AI教育交叉方向强、校友网络覆盖全球EdTech企业与政策机构</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 UPenn GSE Official</span>
+        <a href="https://www.gse.upenn.edu/academics/programs/learning-technologies-edd" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Columbia TC -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">12-01</span>
+      <span class="time">Spring 27</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">哥伦比亚大学 (QS 34)</span>
+        <span class="tag tag-degree">EdD in CMLTD</span>
+        <span class="tag tag-mode">Part-time</span>
+        <span class="tag tag-field">AI与教育技术</span>
+        <span class="tag tag-location">美国 · 混合/在职友好</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">3-5 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">2026.12 截止</span>
+      </div>
+      <div class="item-title">Columbia Teachers College — EdD in Communication, Media & Learning Technologies Design</div>
+      <div class="item-summary">哥大TC的EdD项目聚焦技术、媒体与学习的交叉，AI教育为核心研究领域。在职导向设计，周末和暑期课程为主，含教学设计、学习分析、AI辅助教学等方向。TC常年位居全球教育学院排名第一。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 $1,978/学分</div>
+          <div class="detail-sub">总计约 $178K（90学分）+ 杂费</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">TC General Scholarships</div>
+          <div class="detail-sub">Research Fellowships + 外部EdTech奖学金可叠加申请</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">Sandra Okita (AI与学习)</div>
+          <div class="detail-sub">Paulo Blikstein (创客教育) · Nathan Holbert (建构学习)</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：全球第一教育学院（TC）、纽约区位优势、在职友好课程安排、校友遍布教育决策层</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Columbia Teachers College</span>
+        <a href="https://www.tc.columbia.edu/mathematics-science-and-technology/communication-media-and-learning-technologies-design/degrees--requirements/edd-in-communication-media-and-learning-technologies-design/" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. JHU -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">2026 Fall</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">约翰霍普金斯大学 (QS 32)</span>
+        <span class="tag tag-degree">EdD</span>
+        <span class="tag tag-mode">Part-time / 纯在线</span>
+        <span class="tag tag-field">数字时代学习</span>
+        <span class="tag tag-location">美国 · 纯在线</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">3-5 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">2026.10 截止</span>
+      </div>
+      <div class="item-title">JHU EdD in Digital Age Learning & Educational Technology（纯在线 Part-time）</div>
+      <div class="item-summary">JHU教育学院在线EdD，深入研究AI在学习环境中的整合应用。方向涵盖智能辅导系统、自适应学习技术、教育数据挖掘。纯在线无驻校要求，可全职工作同时就读，论文可基于工作场景开展行动研究。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 $1,617/学分</div>
+          <div class="detail-sub">54学分总计约 $87K，性价比在美Top校中突出</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">SOE Scholarships (有限)</div>
+          <div class="detail-sub">Part-time可申请雇主学费报销，JHU提供分期支付方案</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">数字化学习 / AI in K-12</div>
+          <div class="detail-sub">教育技术评估 · 学习分析 · 在线教学设计</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：全在线最灵活模式、论文可结合工作实际问题、JHU研究型大学资源、性价比突出</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 JHU School of Education</span>
+        <a href="https://education.jhu.edu/academics/edd-dalalet/" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. UCL IOE -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">06-30</span>
+      <span class="time">Deadline</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">UCL 伦敦大学学院 (QS 9)</span>
+        <span class="tag tag-degree">EdD</span>
+        <span class="tag tag-mode">Part-time</span>
+        <span class="tag tag-field">AI与教育</span>
+        <span class="tag tag-location">英国 · 混合</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">4-6 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">2026.06 截止</span>
+      </div>
+      <div class="item-title">UCL IOE — EdD（全球教育学科排名第一，AI & Education方向可选）</div>
+      <div class="item-summary">UCL IOE连续十余年全球教育学科排名第一，在职EdD接受以AI教育、教育科技为研究方向。半在线半驻校，需定期前往伦敦。导师团队含UCL Knowledge Lab的AI教育研究专家，学术含金量极高。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">£11,350/年 (Part-time)</div>
+          <div class="detail-sub">国际生费率，4-6年总计约 £45K-£68K</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">IOE Centenary Scholarship</div>
+          <div class="detail-sub">可申请CSC联合资助 · GREAT Scholarship</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">Rose Luckin (AI教育先驱)</div>
+          <div class="detail-sub">Mutlu Cukurova (学习分析) · Manolis Mavrikis (AIED)</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：全球排名第一教育学院、伦敦AI教育研究重镇、Rose Luckin教授为AI教育奠基学者</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 UCL IOE Official</span>
+        <a href="https://www.ucl.ac.uk/ioe/courses/graduate-research/edd" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Toronto OISE -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">11-15</span>
+      <span class="time">Deadline</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">多伦多大学 OISE (QS 25)</span>
+        <span class="tag tag-degree">EdD / PhD</span>
+        <span class="tag tag-mode">Part-time 可选</span>
+        <span class="tag tag-field">AI与教育</span>
+        <span class="tag tag-location">加拿大 · 混合</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">4-6 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">2026.11 截止</span>
+      </div>
+      <div class="item-title">U of Toronto OISE — EdD/PhD（教育科技/AI教育方向 Part-time可选）</div>
+      <div class="item-summary">OISE是加拿大排名第一、北美顶级的教育学院。其EdD和PhD均接受兼读制，教育科技与AI教育研究为核心方向。多伦多AI生态（Vector Institute）为跨学科AI教育研究提供丰富资源。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 CAD$8,500/年 (Part-time)</div>
+          <div class="detail-sub">国际生Part-time费率优惠，4-6年总计约CAD$34K-$51K</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">OISE Entrance Scholarship</div>
+          <div class="detail-sub">Ontario Graduate Scholarship (OGS) · SSHRC Doctoral Fellowship</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">Clare Brett (在线学习/技术)</div>
+          <div class="detail-sub">Jim Slotta (知识社区) · Marlene Scardamalia (知识建构理论先驱)</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：加拿大第一教育学院、Vector Institute AI生态联动、知识建构理论发源地</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 U of Toronto OISE</span>
+        <a href="https://www.oise.utoronto.ca/ctl/programs/edd" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Edinburgh -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">全年可申</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">爱丁堡大学 (QS 27)</span>
+        <span class="tag tag-degree">PhD in Education</span>
+        <span class="tag tag-mode">Part-time</span>
+        <span class="tag tag-field">数字教育</span>
+        <span class="tag tag-location">英国 · 远程研究为主</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">3-6 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">Rolling</span>
+      </div>
+      <div class="item-title">Edinburgh Moray House — PhD in Digital Education（Part-time远程研究为主）</div>
+      <div class="item-summary">爱丁堡大学Moray House教育学院的数字教育PhD，研究方向含AI教育、学习分析、在线学习设计。兼读制允许以远程研究为主，仅需定期短期访校。Centre for Research in Digital Education为核心研究平台。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 £13,150/年 (Part-time)</div>
+          <div class="detail-sub">国际生Part-time费率，3-6年总计约 £39K-£79K</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">Edinburgh Doctoral College</div>
+          <div class="detail-sub">Principal's Career Development PhD Scholarship · CSC联合培养</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">Sian Bayne (数字教育)</div>
+          <div class="detail-sub">Michael Gallagher (数字学习) · Jen Ross (在线教育)</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：数字教育研究传统深厚、英国顶尖教育学院、远程研究灵活、数字教育研究中心平台</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 University of Edinburgh Moray House</span>
+        <a href="https://www.ed.ac.uk/education/graduate-school/doctoral-research/phd" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. NTU NIE -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">11-15</span>
+      <span class="time">Deadline</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">南洋理工大学 (QS 15)</span>
+        <span class="tag tag-degree">PhD in LSA</span>
+        <span class="tag tag-mode">Part-time</span>
+        <span class="tag tag-field">AI与学习科学</span>
+        <span class="tag tag-location">新加坡 · 混合</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">3-5 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">2026.11 截止</span>
+      </div>
+      <div class="item-title">NTU NIE — PhD in Learning Sciences & Assessment（AI教育方向兼读制）</div>
+      <div class="item-summary">NTU国立教育学院的兼读制PhD，AI in Education为核心研究领域。方向涵盖AI驱动的学习评估、智能辅导系统、教育数据挖掘。新加坡政府大力投资AI+教育（National AI Strategy），研究资源充足。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 S$20,350/年 (Part-time)</div>
+          <div class="detail-sub">国际生费率，3-5年总计约 S$61K-S$102K</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">NIE Research Scholarship</div>
+          <div class="detail-sub">Full-time优先获全额奖学金；Part-time可申请Service Obligation减免学费</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">AI驱动的学习评估</div>
+          <div class="detail-sub">教育数据挖掘 · 智能辅导系统 · 多模态学习分析</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：亚洲教育研究重镇、新加坡国家AI战略支撑、兼读制友好、中英双语环境</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 NTU NIE Official</span>
+        <a href="https://www.ntu.edu.sg/nie/admissions/graduate-admissions/doctor-of-philosophy" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. CUHK -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">2027 Jan</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">香港中文大学 (QS 36)</span>
+        <span class="tag tag-degree">PhD in Education</span>
+        <span class="tag tag-mode">Part-time</span>
+        <span class="tag tag-field">AI教育</span>
+        <span class="tag tag-location">中国香港 · 混合</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">4-6 年</span>
+        <span class="phd-language">英语 / 中文</span>
+        <span class="phd-deadline-date">2026.08 截止</span>
+      </div>
+      <div class="item-title">CUHK 教育学院 PhD — 学习科学与AI教育方向（含兼读制路径）</div>
+      <div class="item-summary">港中文教育学院提供教育学PhD兼读制，接受以AI辅助语言学习、教育数据挖掘、智能学习环境为研究方向。中英双语学术环境，需定期到校。Part-time需证明在港就业或居住，适合粤港澳大湾区在职教育从业者。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">HK$42,100/年 (Part-time)</div>
+          <div class="detail-sub">兼读制年费，4-6年总计约 HK$168K-HK$253K</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">HKPFS (Full-time专属)</div>
+          <div class="detail-sub">Part-time可申请CUHK Vice-Chancellor's Scholarship · 教育学院奖学金</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">AI辅助语言学习</div>
+          <div class="detail-sub">教育数据挖掘 · 智能学习环境 · 计算机支持协作学习(CSCL)</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：亚洲顶级教育学院、中英双语环境、大湾区政策红利、AI+语言教育方向突出</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 CUHK Faculty of Education</span>
+        <a href="https://www.fed.cuhk.edu.hk/higherdegree/programmes/phd/" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. HKU -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">09-01</span>
+      <span class="time">Deadline</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">香港大学 (QS 17)</span>
+        <span class="tag tag-degree">PhD / EdD</span>
+        <span class="tag tag-mode">Part-time 可选</span>
+        <span class="tag tag-field">AI教育</span>
+        <span class="tag tag-location">中国香港 · 混合</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">4-6 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">2026.09 截止</span>
+      </div>
+      <div class="item-title">HKU Faculty of Education — PhD/EdD（AI教育技术方向兼读制可选）</div>
+      <div class="item-summary">港大教育学院（全球教育学科QS前10）的博士项目提供兼读制路径。教育技术、学习科学、AI在教育中的应用为核心领域。港大AI教育研究团队在学习分析、STEM+AI教育方向国际活跃。Part-time需在港有工作或居住证明。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">HK$42,100/年 (Part-time)</div>
+          <div class="detail-sub">港府资助学费标准，4-6年总计约 HK$168K-HK$253K</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">HKU Presidential PhD Scholar</div>
+          <div class="detail-sub">HKPFS（Full-time）；兼读制可申请学院研究资助</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">学习分析/AI教育</div>
+          <div class="detail-sub">STEM+AI教育 · 学习设计 · 教育技术评估</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：港大教育学科全球Top 10、AI教育研究团队国际活跃、大湾区战略区位</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 HKU Faculty of Education</span>
+        <a href="https://web.edu.hku.hk/programme/phd" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Open University UK -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">全年可申</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">英国开放大学</span>
+        <span class="tag tag-degree">PhD / EdD</span>
+        <span class="tag tag-mode">纯远程 / Part-time</span>
+        <span class="tag tag-field">AI与教育技术</span>
+        <span class="tag tag-location">英国 · 纯远程</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">3-6 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">Rolling</span>
+      </div>
+      <div class="item-title">The Open University — PhD in Educational Technology（全球远程教育先驱、纯远程+Part-time）</div>
+      <div class="item-summary">英国开放大学是远程教育界的先驱和全球标杆，其教育技术博士完全远程进行，含AI in Education、学习分析、在线教学设计等方向。知识媒体研究所(KMi)与教育技术研究所(IET)双平台支持，全年滚动申请。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 £7,500/年 (Part-time远程)</div>
+          <div class="detail-sub">性价比极高的国际生远程项目，3-6年总计约 £22K-£45K</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">OU Research Studentships</div>
+          <div class="detail-sub">竞争激烈，偶有面向国际学生的专项资助</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">John Domingue (KMi/AI)</div>
+          <div class="detail-sub">AI教育 · 学习分析 · 语义网教育应用 · 开放教育</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：全球远程教育第一品牌、纯远程无驻校、时间安排最灵活、性价比极高</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 The Open University WELS/KMi</span>
+        <a href="https://wels.open.ac.uk/research/research-degrees" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Monash -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">全年可申</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">莫纳什大学 (QS 37)</span>
+        <span class="tag tag-degree">PhD in Education</span>
+        <span class="tag tag-mode">Part-time</span>
+        <span class="tag tag-field">教育AI</span>
+        <span class="tag tag-location">澳大利亚 · 混合</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">3-6 年</span>
+        <span class="phd-language">英语</span>
+        <span class="phd-deadline-date">Rolling</span>
+      </div>
+      <div class="item-title">Monash Faculty of Education — PhD（含Part-time、CoLAM学习分析中心支持）</div>
+      <div class="item-summary">莫纳什大学教育学院的PhD接受兼读制，AI在学习与教学中的应用是学院重点研究领域。Centre for Learning Analytics at Monash (CoLAM)为AI教育方向提供世界级研究支持与数据基础设施。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 AUD$38,900/年</div>
+          <div class="detail-sub">国际生费率，3-6年总计约 AUD$117K-$233K</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">Monash Graduate Scholarship</div>
+          <div class="detail-sub">Full-time优先；Part-time需证明经济能力</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">Dragan Gasevic (学习分析顶尖学者)</div>
+          <div class="detail-sub">CoLAM中心 · 学习分析 · 教育AI · 自我调节学习</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：CoLAM学习分析中心世界顶级、Dragan Gasevic团队背书、滚动申请灵活</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Monash Faculty of Education</span>
+        <a href="https://www.monash.edu/education/research/degrees" target="_blank">🔗 项目主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. EdUHK -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">2027 Jan</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">香港教育大学</span>
+        <span class="tag tag-degree">EdD / PhD</span>
+        <span class="tag tag-mode">Part-time</span>
+        <span class="tag tag-field">AI与教育科技</span>
+        <span class="tag tag-location">中国香港 · 混合</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">3-5 年 (EdD) / 3-6 年 (PhD)</span>
+        <span class="phd-language">英语 / 中文</span>
+        <span class="phd-deadline-date">Rolling</span>
+      </div>
+      <div class="item-title">EdUHK 香港教育大学 — EdD/PhD in Education（教育科技与AI教育方向兼读制）</div>
+      <div class="item-summary">香港唯一的师范类大学，教育学科亚洲领先。其EdD（教育博士）和PhD提供兼读制，教育科技、AI教育应用、学习分析为核心研究方向。兼读制对本地及大湾区在职教育者友好，中英双语教学环境。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">EdD: HK$5,000/学分×72</div>
+          <div class="detail-sub">EdD总计约HK$360K；PhD兼读制约HK$42,100/年</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">EdUHK Research Scholarship</div>
+          <div class="detail-sub">Full-time优先获全奖；兼读制有EdUHK Doctoral Scholarship可申请</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">AI教育 / 教育科技</div>
+          <div class="detail-sub">学习分析 · 技术增强学习 · 教师AI素养</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：香港唯一师范类大学、教育科技/AI教育为重点方向、中英双语、大湾区便利</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 EdUHK Graduate School</span>
+        <a href="https://www.eduhk.hk/gradsch/" target="_blank">🔗 研究生院主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Tsinghua -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">10-15</span>
+      <span class="time">Deadline</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">清华大学</span>
+        <span class="tag tag-degree">教育博士 (EdD)</span>
+        <span class="tag tag-mode">在职 (定向就业)</span>
+        <span class="tag tag-field">教育技术 / AI教育</span>
+        <span class="tag tag-location">中国 · 北京</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">4-6 年</span>
+        <span class="phd-language">中文为主</span>
+        <span class="phd-deadline-date">2026.10 截止</span>
+      </div>
+      <div class="item-title">清华大学教育研究院 — 教育博士 (EdD)（教育领导与管理方向，含教育技术/AI教育选题）</div>
+      <div class="item-summary">清华教育研究院的教育博士专为在职教育管理者和骨干教师设计，定向就业培养模式。教育技术、AI教育应用、智慧教育可作为博士论文选题方向。清华强大的AI科研实力为跨学科研究提供独特资源支撑。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 ¥40,000/年</div>
+          <div class="detail-sub">4-6年总计约 ¥160K-240K（以当年招生简章为准）</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">学业奖学金 (全日制)</div>
+          <div class="detail-sub">在职EdD一般自费，部分单位可报销学费</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">教育技术 / AI教育</div>
+          <div class="detail-sub">依托清华AI研究院 · 智慧教育 · 在线教育</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：清华大学品牌、AI跨学科资源全国最强、在职定向培养模式、教育政策影响力大</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 清华大学教育研究院</span>
+        <a href="https://www.ioe.tsinghua.edu.cn/" target="_blank">🔗 研究院主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. BNU -->
+  <div class="timeline-row last-in-category">
+    <div class="timeline-gutter">
+      <span class="date">11-30</span>
+      <span class="time">Deadline</span>
+      <span class="dot dot-a"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-institution">北京师范大学</span>
+        <span class="tag tag-degree">教育博士 (EdD)</span>
+        <span class="tag tag-mode">在职 (定向就业)</span>
+        <span class="tag tag-field">智慧教育 / AI教育</span>
+        <span class="tag tag-location">中国 · 北京</span>
+      </div>
+      <div class="phd-meta-row">
+        <span class="phd-duration">4-6 年</span>
+        <span class="phd-language">中文为主</span>
+        <span class="phd-deadline-date">2026.11 截止</span>
+      </div>
+      <div class="item-title">北京师范大学教育学部 — 教育博士 (EdD)（课程与教学方向，含AI/智慧教育选题）</div>
+      <div class="item-summary">北师大教育学部是中国排名第一的教育学院，"智慧教育"和"AI教育"为其重点发展领域。在职EdD定向培养，接受AI教育应用、智慧学习环境、教育大数据等选题。依托智慧学习研究院和互联网教育智能技术国家工程实验室。</div>
+      <div class="phd-detail-section">
+        <div class="phd-detail-card">
+          <div class="detail-label">💰 学费</div>
+          <div class="detail-value">约 ¥40,000/年</div>
+          <div class="detail-sub">4-6年总计约 ¥160K-240K（以当年招生简章为准）</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">🎓 奖学金</div>
+          <div class="detail-value">全额学业奖学金 (全日制)</div>
+          <div class="detail-sub">在职EdD一般自费；可申请北师大优秀博士论文基金</div>
+        </div>
+        <div class="phd-detail-card">
+          <div class="detail-label">👨‍🏫 导师方向</div>
+          <div class="detail-value">智慧学习 / AI教育</div>
+          <div class="detail-sub">智慧学习研究院(CISL) · 互联网教育国家工程实验室</div>
+        </div>
+      </div>
+      <div class="item-highlight phd">💡 亮点：中国教育学科排名第一、智慧学习国家工程实验室、AI教育研究平台顶级</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 北京师范大学教育学部</span>
+        <a href="https://fe.bnu.edu.cn/" target="_blank">🔗 学部主页</a>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /tab-a -->
+
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  TAB B · AI 免费权威课程                               -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="category-section" id="tab-b">
+  <div class="category-header cat-b">
+    <span class="cat-icon">📚</span>
+    <span class="cat-name">全球 AI 免费权威课程 · 头部机构出品</span>
+    <span class="cat-count">12 门课程</span>
+  </div>
+
+  <!-- Stanford CS229 -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">Stanford</span>
+        <span class="tag tag-topic">机器学习</span>
+        <span class="tag tag-level">进阶</span>
+        <span class="tag tag-cert">无证书</span>
+        <span class="tag tag-format">视频+讲义</span>
+      </div>
+      <div class="item-title">Stanford CS229: Machine Learning — Andrew Ng 的经典 ML 课程（免费全视频）</div>
+      <div class="item-summary">斯坦福大学 Andrew Ng 教授讲授的经典机器学习课程，是许多人入行 ML 的起点。覆盖监督学习、无监督学习、深度学习基础、强化学习等。课程视频、讲义、作业全部免费公开，数学推导严谨，理论与实践并重。</div>
+      <div class="item-highlight">💡 推荐理由：机器学习界的「圣经」课程，Andrew Ng 亲授，全球数千万人学过</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Stanford CS229 / YouTube</span>
+        <a href="https://cs229.stanford.edu/" target="_blank">🔗 课程主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIT Intro to DL -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">MIT</span>
+        <span class="tag tag-topic">深度学习</span>
+        <span class="tag tag-level">入门-进阶</span>
+        <span class="tag tag-cert">无证书</span>
+        <span class="tag tag-format">视频+代码</span>
+      </div>
+      <div class="item-title">MIT 6.S191: Introduction to Deep Learning — 全球最受欢迎的 DL 入门课</div>
+      <div class="item-summary">MIT 官方深度学习入门课程，每年更新。覆盖神经网络基础、CNN、RNN、Transformers、生成模型、强化学习等前沿主题。全部视频、Lab 代码（TensorFlow/PyTorch）免费开放，配有交互式 Jupyter Notebook。</div>
+      <div class="item-highlight">💡 推荐理由：MIT 官方出品、代码可运行、每年内容更新，打 DL 基础的首选</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 MIT 6.S191 Official</span>
+        <a href="http://introtodeeplearning.com/" target="_blank">🔗 课程主页（含全部视频 + 代码）</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- fast.ai -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">fast.ai</span>
+        <span class="tag tag-topic">深度学习实战</span>
+        <span class="tag tag-level">入门</span>
+        <span class="tag tag-cert">无证书</span>
+        <span class="tag tag-format">视频+代码+论坛</span>
+      </div>
+      <div class="item-title">fast.ai — Practical Deep Learning for Coders（完全免费的顶级 DL 实战课）</div>
+      <div class="item-summary">由 Jeremy Howard 创立的 fast.ai 提供的免费深度学习实战课程，采用「自上而下」教学法——先跑出结果再理解原理。用 PyTorch + fastai 库，适合有编程基础但 DL 零基础的学习者。配套活跃论坛和 GPU 资源。</div>
+      <div class="item-highlight">💡 推荐理由：全球最受好评的免费 DL 实战课、「先实践后理论」的教学革命</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 fast.ai Official</span>
+        <a href="https://course.fast.ai/" target="_blank">🔗 课程主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Elements of AI -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">赫尔辛基大学</span>
+        <span class="tag tag-topic">AI 通识</span>
+        <span class="tag tag-level">零基础</span>
+        <span class="tag tag-cert">免费证书</span>
+        <span class="tag tag-format">在线交互</span>
+      </div>
+      <div class="item-title">Elements of AI — 赫尔辛基大学出品，全球 200 万人学过的免费 AI 通识课</div>
+      <div class="item-summary">芬兰赫尔辛基大学与 Reaktor 联合推出的免费在线 AI 课程，目标是让全球 1% 人口掌握 AI 基础知识。含「AI 入门」和「构建 AI」两个模块，支持多语言（含中文），完成可获 ECTS 学分证书。零数学编程基础可学。</div>
+      <div class="item-highlight">💡 推荐理由：全球最具影响力的 AI 素养课程、多语言支持、可获得大学学分证书</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Elements of AI Official</span>
+        <a href="https://www.elementsofai.com/" target="_blank">🔗 课程主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Harvard CS50 AI -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">Harvard</span>
+        <span class="tag tag-topic">AI 导论</span>
+        <span class="tag tag-level">入门</span>
+        <span class="tag tag-cert">付费证书可选</span>
+        <span class="tag tag-format">视频+项目</span>
+      </div>
+      <div class="item-title">Harvard CS50's Introduction to AI with Python — 哈佛最受欢迎的 AI 课</div>
+      <div class="item-summary">哈佛大学 CS50 系列的 AI 入门课程，通过 Python 学习 AI 核心概念：搜索、知识表示、概率推理、机器学习、神经网络、NLP 等。视频、讲义、项目全部免费，edX 上可免费旁听。全球数百万学习者验证过的一流课程。</div>
+      <div class="item-highlight">💡 推荐理由：哈佛金字招牌、CS50 系列 AI 篇、项目驱动的学习体验</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Harvard CS50 / edX</span>
+        <a href="https://cs50.harvard.edu/ai/" target="_blank">🔗 课程主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google ML Crash Course -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">Google</span>
+        <span class="tag tag-topic">机器学习</span>
+        <span class="tag tag-level">入门</span>
+        <span class="tag tag-cert">无证书</span>
+        <span class="tag tag-format">交互式</span>
+      </div>
+      <div class="item-title">Google Machine Learning Crash Course — Google 内部培训同款 ML 课程</div>
+      <div class="item-summary">Google 推出的免费交互式 ML 课程，原为 Google 内部工程师培训材料。覆盖 ML 基础概念、TensorFlow、特征工程、神经网络等。含视频讲解、交互式编程练习和真实案例研究。2026 年已更新至最新版。</div>
+      <div class="item-highlight">💡 推荐理由：Google 内部同款培训、实战导向、TensorFlow 生态体系完整</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Google AI / Google for Developers</span>
+        <a href="https://developers.google.com/machine-learning/crash-course" target="_blank">🔗 课程主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DeepLearning.AI Short Courses -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">DeepLearning.AI</span>
+        <span class="tag tag-topic">LLM / Agent</span>
+        <span class="tag tag-level">进阶</span>
+        <span class="tag tag-cert">免费证书（短课）</span>
+        <span class="tag tag-format">视频+Notebook</span>
+      </div>
+      <div class="item-title">DeepLearning.AI Short Courses — Andrew Ng 团队 LLM/AI Agent 系列短课</div>
+      <div class="item-summary">Andrew Ng 的 DeepLearning.AI 平台推出一系列免费短课（1-2 小时），涵盖 ChatGPT Prompt Engineering、LangChain、AI Agents、RAG、多模态 AI 等最新主题。可直接在浏览器中运行代码，学完获 Andrew Ng 签名的完成证书。</div>
+      <div class="item-highlight">💡 推荐理由：Andrew Ng 品牌、紧跟前沿（LLM/Agent）、1-2 小时快速入门新模式</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 DeepLearning.AI</span>
+        <a href="https://www.deeplearning.ai/short-courses/" target="_blank">🔗 课程列表</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NVIDIA DLI -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">NVIDIA</span>
+        <span class="tag tag-topic">GPU/加速计算</span>
+        <span class="tag tag-level">入门-进阶</span>
+        <span class="tag tag-cert">免费证书</span>
+        <span class="tag tag-format">交互式+GPU Lab</span>
+      </div>
+      <div class="item-title">NVIDIA Deep Learning Institute — 免费 GPU 加速计算 + AI 课程（含云 GPU Lab）</div>
+      <div class="item-summary">NVIDIA 官方深度学习学院免费课程，覆盖 CUDA、加速计算、生成式 AI、LLM 微调、RAG 构建等。提供免费的云端 GPU 实验环境，学完获得 NVIDIA 官方证书。是理解 AI 底层硬件和大模型部署的首选资源。</div>
+      <div class="item-highlight">💡 推荐理由：NVIDIA 官方认证、免费云 GPU 环境、从算法到硬件的全栈学习</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 NVIDIA DLI Official</span>
+        <a href="https://learn.nvidia.com/" target="_blank">🔗 课程主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Microsoft AI School -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">Microsoft</span>
+        <span class="tag tag-topic">Azure AI</span>
+        <span class="tag tag-level">入门-进阶</span>
+        <span class="tag tag-cert">免费证书</span>
+        <span class="tag tag-format">模块化学习</span>
+      </div>
+      <div class="item-title">Microsoft AI Skills — Azure AI 免费学习路径 + AI-900/102 考证路径</div>
+      <div class="item-summary">微软官方 AI 学习平台，提供从基础 AI 概念到 Azure OpenAI Service 部署的完整路径。含生成式 AI、Copilot、负责任的 AI 等专题。部分模块可免费备考 AI-900 / AI-102 认证考试，职场加分利器。</div>
+      <div class="item-highlight">💡 推荐理由：微软生态全覆盖、免费考证路径、企业级 AI 部署技能一站学</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Microsoft Learn</span>
+        <a href="https://learn.microsoft.com/en-us/training/browse/?products=azure-ai-services" target="_blank">🔗 课程主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coursera AI for Everyone -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">Coursera (+DeepLearning.AI)</span>
+        <span class="tag tag-topic">AI 素养</span>
+        <span class="tag tag-level">零基础</span>
+        <span class="tag tag-cert">付费证书可选</span>
+        <span class="tag tag-format">视频+测试</span>
+      </div>
+      <div class="item-title">AI For Everyone — Andrew Ng 面向全民的免费 AI 素养课</div>
+      <div class="item-summary">Andrew Ng 专门为非技术人群（产品经理、管理者、创业者、教育者）设计的 AI 素养课程。解释什么是 AI、AI 能做什么不能做什么、如何将 AI 融入组织战略。免费旁听全部内容，仅证书收费。</div>
+      <div class="item-highlight">💡 推荐理由：非技术人员的 AI 启蒙课、Andrew Ng 亲授、战略视角独到</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Coursera / DeepLearning.AI</span>
+        <a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">🔗 课程主页（免费旁听）</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIT OCW AI -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">MIT OCW</span>
+        <span class="tag tag-topic">AI 全栈</span>
+        <span class="tag tag-level">入门-进阶</span>
+        <span class="tag tag-cert">无证书</span>
+        <span class="tag tag-format">视频+讲义+作业</span>
+      </div>
+      <div class="item-title">MIT OpenCourseWare — AI 全栈免费课程矩阵（含 CS 系列全套）</div>
+      <div class="item-summary">MIT OpenCourseWare 提供了几乎全部 AI 相关课程的免费资源：6.034 AI、6.036 ML、6.S191 DL、6.868 社会与 AI、6.869 计算机视觉等。含完整视频、讲义、习题和考试，可构建一套 MIT 标准的 AI 自学体系。</div>
+      <div class="item-highlight">💡 推荐理由：MIT 全栈 AI 课程免费开放、顶级学术资源、可构建完整自学体系</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 MIT OpenCourseWare</span>
+        <a href="https://ocw.mit.edu/search/?q=artificial+intelligence" target="_blank">🔗 AI 课程合集</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HuggingFace NLP -->
+  <div class="timeline-row last-in-category">
+    <div class="timeline-gutter">
+      <span class="date">Ongoing</span>
+      <span class="time">Self-paced</span>
+      <span class="dot dot-b"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-platform">Hugging Face</span>
+        <span class="tag tag-topic">NLP/Transformers</span>
+        <span class="tag tag-level">进阶</span>
+        <span class="tag tag-cert">无证书</span>
+        <span class="tag tag-format">交互式+代码</span>
+      </div>
+      <div class="item-title">Hugging Face NLP Course — Transformers 时代的必备 NLP 实战课</div>
+      <div class="item-summary">Hugging Face 官方出品的免费 NLP 课程，从零教授 Transformers 架构和 Hugging Face 生态系统。覆盖 Tokenizer、模型微调、数据集处理、模型部署等。所有代码可在 Google Colab 直接运行，是进入 NLP 和 LLM 领域最直接的入口。</div>
+      <div class="item-highlight">💡 推荐理由：LLM 时代人手必备的 NLP 技能、HF 生态官方教程、社区活跃</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Hugging Face Official</span>
+        <a href="https://huggingface.co/learn/nlp-course" target="_blank">🔗 课程主页</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /tab-b -->
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  TAB C · 创业孵化与竞赛                                   -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="category-section" id="tab-c">
+  <div class="category-header cat-c" style="border-left-color: var(--cat-c); background: var(--cat-c-light);">
+    <span class="cat-icon">🚀</span>
+    <span class="cat-name">AI 教育创业孵化 & 竞赛 · 全球机会</span>
+    <span class="cat-count">10 个项目</span>
+  </div>
+
+  <!-- Y Combinator -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">每年 2 批</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">Y Combinator</span>
+        <span class="tag tag-inc-type">加速器</span>
+        <span class="tag tag-inc-stage">早期</span>
+        <span class="tag tag-inc-field">EdTech / AI</span>
+        <span class="tag tag-inc-region">美国 · 硅谷</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">2026.09 下一批</span>
+        <span class="inc-prize">$500K 标准投资</span>
+        <span class="inc-format">3 个月加速</span>
+      </div>
+      <div class="item-title">Y Combinator — 全球最顶级创业加速器，EdTech/AI 教育为重点赛道</div>
+      <div class="item-summary">YC 每年投资数百家初创公司，EdTech 和 AI 是其重点关注的赛道之一。入选团队获 $500K 标准投资 + 3 个月密集孵化 + Demo Day 路演。YC 校友含 Duolingo、Lambda School 等知名教育科技公司，AI 教育方向近年录取率持续上升。</div>
+      <div class="item-highlight incubator">💡 推荐理由：硅谷创投天花板、AI 教育赛道被明确标注为重点方向、校友网络无与伦比</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Y Combinator Official</span>
+        <a href="https://www.ycombinator.com/apply" target="_blank">🔗 申请主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSV Cup -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">年度评选</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">ASU+GSV</span>
+        <span class="tag tag-inc-type">创业竞赛</span>
+        <span class="tag tag-inc-stage">Pre-Seed~A轮</span>
+        <span class="tag tag-inc-field">EdTech / AI教育</span>
+        <span class="tag tag-inc-region">全球 · 线上+线下</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">2026.12 截止</span>
+        <span class="inc-prize">$1M 奖金+投资</span>
+        <span class="inc-format">竞赛+峰会</span>
+      </div>
+      <div class="item-title">GSV Cup / ASU+GSV Summit — 全球最大 EdTech 创业竞赛（$1M 奖池）</div>
+      <div class="item-summary">ASU+GSV 峰会被誉为「教育科技界的达沃斯」，其 GSV Cup 竞赛面向全球 Pre-Seed 到 A 轮的 EdTech 创业公司。2026 年新增 AI in Education 专属赛道，优胜者获 $1M 奖池 + 顶级 VC 面对面路演机会。是全球 EdTech 创业者最重要的展示窗口之一。</div>
+      <div class="item-highlight incubator">💡 推荐理由：EdTech 界最顶级竞赛、AI 教育新赛道、直接对接全球顶级 VC</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 ASU+GSV Summit</span>
+        <a href="https://www.asugsvsummit.com/gsv-cup" target="_blank">🔗 竞赛主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LearnLaunch -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">每年多批</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">LearnLaunch</span>
+        <span class="tag tag-inc-type">垂直加速器</span>
+        <span class="tag tag-inc-stage">种子-早期</span>
+        <span class="tag tag-inc-field">EdTech 专精</span>
+        <span class="tag tag-inc-region">美国 · 波士顿</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">2026.09 下批</span>
+        <span class="inc-prize">$120K 投资</span>
+        <span class="inc-format">4 个月加速</span>
+      </div>
+      <div class="item-title">LearnLaunch Accelerator — 全球唯一致力于 EdTech 的垂直加速器</div>
+      <div class="item-summary">波士顿 LearnLaunch 是全球罕见的纯 EdTech 加速器，位于哈佛/MIT 教育科技创新生态核心区。提供 $120K 种子投资 + 4 个月加速计划 + 导师网络。2026 年开始重点关注 AI 驱动的个性化学习和教育评估工具，非常适合 AI 教育方向的早期创业团队。</div>
+      <div class="item-highlight incubator">💡 推荐理由：唯一纯 EdTech 加速器、波士顿教育科技生态核心、AI 教育新重点</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 LearnLaunch Official</span>
+        <a href="https://learnlaunch.com/accelerator/" target="_blank">🔗 加速器官网</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Microsoft Imagine Cup -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">01-15</span>
+      <span class="time">2027 赛季</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">Microsoft</span>
+        <span class="tag tag-inc-type">全球竞赛</span>
+        <span class="tag tag-inc-stage">学生团队</span>
+        <span class="tag tag-inc-field">AI教育 / 技术</span>
+        <span class="tag tag-inc-region">全球 · 线上</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">2027.01 截止</span>
+        <span class="inc-prize">$100K + Azure 资源</span>
+        <span class="inc-format">竞赛 + 总决赛</span>
+      </div>
+      <div class="item-title">Microsoft Imagine Cup — 全球最大学生技术竞赛，AI 教育赛道开放</div>
+      <div class="item-summary">微软 Imagine Cup 是全球规模最大的学生技术竞赛，覆盖 190+ 国家。2027 赛季新增 AI 赛道，涵盖 AI for Education 子方向。参赛者获 Azure 免费额度 + 技术导师指导，优胜团队进入全球总决赛争夺 $100K 大奖和微软创始人 mentorship。</div>
+      <div class="item-highlight incubator">💡 推荐理由：微软背书、学生免费参赛、Azure 资源支持、AI 教育为新赛道</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Microsoft Imagine Cup</span>
+        <a href="https://imaginecup.microsoft.com/" target="_blank">🔗 竞赛主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HundrED -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">年度征集</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">HundrED</span>
+        <span class="tag tag-inc-type">创新基金</span>
+        <span class="tag tag-inc-stage">不限</span>
+        <span class="tag tag-inc-field">AI教育创新</span>
+        <span class="tag tag-inc-region">芬兰 · 全球</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">2026.10 年度征集</span>
+        <span class="inc-prize">选定+全球推广</span>
+        <span class="inc-format">评选+推广</span>
+      </div>
+      <div class="item-title">HundrED Innovation Fund — 芬兰全球教育创新评选 + AI 教育专题</div>
+      <div class="item-summary">HundrED 是芬兰发起的全球教育创新组织，每年评选全球 100 个最具影响力的教育创新项目并为其提供全球推广资源。2026 年新增 AI in Education 专题征集，入选项目将获得全球教育社区曝光和潜在合作伙伴对接，是教育创新者获得全球关注的重要渠道。</div>
+      <div class="item-highlight incubator">💡 推荐理由：全球教育创新权威平台、入选即获全球曝光、芬兰教育创新基因</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 HundrED Official</span>
+        <a href="https://hundred.org/en/collections/ai-in-education" target="_blank">🔗 AI 教育专题</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- XPRIZE -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">TBD</span>
+      <span class="time">待公布</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">XPRIZE</span>
+        <span class="tag tag-inc-type">大奖赛</span>
+        <span class="tag tag-inc-stage">不限</span>
+        <span class="tag tag-inc-field">AI教育 / 数字学习</span>
+        <span class="tag tag-inc-region">全球</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">待公布</span>
+        <span class="inc-prize">$1M-$10M</span>
+        <span class="inc-format">多年竞赛</span>
+      </div>
+      <div class="item-title">XPRIZE Digital Learning / AI — 全球最具影响力的教育科技大奖</div>
+      <div class="item-summary">XPRIZE 是全球最负盛名的激励性竞赛大奖，其教育赛道曾设 $10M Global Learning XPRIZE。目前正在筹备新的 AI+教育相关竞赛主题（待正式公布）。奖金池通常为 $1M-$10M，是教育科技领域最具吸引力的创新激励之一。建议持续关注官方公告。</div>
+      <div class="item-highlight incubator">💡 推荐理由：教育科技界「诺贝尔奖」级别、百万级美元奖金、全球影响力巨大</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 XPRIZE Official</span>
+        <a href="https://www.xprize.org/prizes" target="_blank">🔗 竞赛列表</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WISE Award -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">03-15</span>
+      <span class="time">2027 赛季</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">WISE / 卡塔尔基金会</span>
+        <span class="tag tag-inc-type">创新大奖</span>
+        <span class="tag tag-inc-stage">已有项目</span>
+        <span class="tag tag-inc-field">AI教育 / 教育创新</span>
+        <span class="tag tag-inc-region">全球 · 多哈</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">2027.03 截止</span>
+        <span class="inc-prize">$20K + 全球峰会</span>
+        <span class="inc-format">评选+峰会</span>
+      </div>
+      <div class="item-title">WISE Award — 卡塔尔基金会世界教育创新峰会大奖（AI 教育可申报）</div>
+      <div class="item-summary">WISE（世界教育创新峰会）由卡塔尔基金会主办，每年评选 6 个全球最具创新性和影响力的教育项目。AI 教育项目可以申报，优胜项目获 $20K 奖金 + 多哈峰会展示机会 + 全球媒体曝光。是教育领域含金量最高的奖项之一。</div>
+      <div class="item-highlight incubator">💡 推荐理由：教育界奥斯卡级奖项、全球峰会展示、AI 教育项目受鼓励申报</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 WISE Qatar Foundation</span>
+        <a href="https://www.wise-qatar.org/wise-awards/" target="_blank">🔗 WISE Award</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- European EdTech Alliance -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">持续开放</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">EEA</span>
+        <span class="tag tag-inc-type">联盟/网络</span>
+        <span class="tag tag-inc-stage">成长阶段</span>
+        <span class="tag tag-inc-field">EdTech / AI</span>
+        <span class="tag tag-inc-region">欧洲 · 多地</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">滚动加入</span>
+        <span class="inc-prize">资源对接</span>
+        <span class="inc-format">网络+政策</span>
+      </div>
+      <div class="item-title">European EdTech Alliance — 欧洲 EdTech 创业网络 + 各国加速器联盟</div>
+      <div class="item-summary">EEA 汇聚了欧洲 20+ 国家的 EdTech 组织和加速器，提供跨境市场准入、政策倡导和合作对接。适合有意进入欧洲市场的教育科技创业者，联盟可帮助对接各国本地加速器和政府资助项目，AI 教育是成员间重点合作方向。</div>
+      <div class="item-highlight incubator">💡 推荐理由：欧洲市场一站式入口、跨境资源整合、政策支持网络</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 European EdTech Alliance</span>
+        <a href="https://www.edtecheurope.org/" target="_blank">🔗 EEA 官网</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HolonIQ -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">Rolling</span>
+      <span class="time">年度评选</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">HolonIQ</span>
+        <span class="tag tag-inc-type">榜单/评选</span>
+        <span class="tag tag-inc-stage">成长/成熟期</span>
+        <span class="tag tag-inc-field">EdTech / AI 教育</span>
+        <span class="tag tag-inc-region">全球</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">2026 Q4 评选</span>
+        <span class="inc-prize">全球曝光+对接</span>
+        <span class="inc-format">榜单+报告</span>
+      </div>
+      <div class="item-title">HolonIQ EdTech 100 / AI in Education 50 — 全球教育科技权威榜单评选</div>
+      <div class="item-summary">HolonIQ 是全球教育科技行业最权威的数据和研究平台，其 EdTech 100 年度榜单是投资人和行业的风向标。2026 年新增 AI in Education 50 专题榜单，入选公司获得全球投资人和客户关注，是教育科技企业证明行业地位的重要标志。</div>
+      <div class="item-highlight incubator">💡 推荐理由：行业风向标级榜单、投资人高度关注、新增 AI 教育专项评选</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 HolonIQ Official</span>
+        <a href="https://www.holoniq.com/" target="_blank">🔗 HolonIQ 官网</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- China EdTech Competition -->
+  <div class="timeline-row last-in-category">
+    <div class="timeline-gutter">
+      <span class="date">待公布</span>
+      <span class="time">年度赛事</span>
+      <span class="dot dot-c"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★</div>
+      <div class="tags">
+        <span class="tag tag-incubator">教育部/省级</span>
+        <span class="tag tag-inc-type">创新创业大赛</span>
+        <span class="tag tag-inc-stage">学生/教师</span>
+        <span class="tag tag-inc-field">AI+教育</span>
+        <span class="tag tag-inc-region">中国 · 全国</span>
+      </div>
+      <div class="inc-meta-row">
+        <span class="inc-deadline">待 2027 公布</span>
+        <span class="inc-prize">政策支持+孵化</span>
+        <span class="inc-format">大赛+落地</span>
+      </div>
+      <div class="item-title">中国国际「互联网+」大学生创新创业大赛 — 教育/AI 赛道（含产业命题赛道）</div>
+      <div class="item-summary">教育部主办的全国最大学生创新创业赛事，每年吸引数百万学生参与。2026 年产业命题赛道新增 AI 教育相关命题，获奖项目可获得政府孵化支持、投资对接和落地政策。是进入中国 EdTech 市场最直接的展示和加速通道之一。</div>
+      <div class="item-highlight incubator">💡 推荐理由：中国最大学生创业赛事、政府孵化政策支持、AI 教育新命题方向</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 全国大学生创业服务网</span>
+        <a href="https://cy.ncss.cn/" target="_blank">🔗 赛事官网</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /tab-c -->
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!--  TAB D · 学术会议与征稿                                   -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="category-section" id="tab-d">
+  <div class="category-header cat-d" style="border-left-color: var(--cat-d); background: var(--cat-d-light);">
+    <span class="cat-icon">📝</span>
+    <span class="cat-name">AI 教育学术会议 & 征稿 · Call for Papers</span>
+    <span class="cat-count">10 个会议/征稿</span>
+  </div>
+
+  <!-- AIED 2027 -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">TBD</span>
+      <span class="time">2027</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">AIED</span>
+        <span class="tag tag-cfp-type">Full Paper</span>
+        <span class="tag tag-conf-topic">AI教育 全方向</span>
+        <span class="tag tag-conf-tier">CCF-B · 顶会</span>
+        <span class="tag tag-conf-venue">待公布 · 全球巡回</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">截稿 2027.Q1（预估）</span>
+        <span class="conf-date">2027.07 开会</span>
+        <span class="conf-location">待公布</span>
+      </div>
+      <div class="item-title">AIED 2027 — Artificial Intelligence in Education（AI 教育领域第一会议）</div>
+      <div class="item-summary">AIED 是人工智能教育领域最权威的国际学术会议（CCF-B 类），由国际 AIED 学会主办。覆盖智能辅导系统、自适应学习、教育数据挖掘、AI 素养教育、生成式 AI 教育应用等全部子方向。录用论文发表在 Springer LNCS 系列，是 AI 教育研究者的必投会议。</div>
+      <div class="item-highlight conf">💡 推荐理由：AI 教育领域 No.1 顶会、Springer 出版、全面覆盖 AI+教育各方向</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 International AIED Society</span>
+        <a href="https://iaied.org/conferences" target="_blank">🔗 AIED 系列会议</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAK 2027 -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">10-01</span>
+      <span class="time">截稿预估</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">LAK</span>
+        <span class="tag tag-cfp-type">Full/Short Paper</span>
+        <span class="tag tag-conf-topic">学习分析 + AI</span>
+        <span class="tag tag-conf-tier">CCF-C · 顶会级</span>
+        <span class="tag tag-conf-venue">2027.03 · 全球巡回</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">截稿 2026.10（预估）</span>
+        <span class="conf-date">2027.03 开会</span>
+        <span class="conf-location">待公布</span>
+      </div>
+      <div class="item-title">LAK 2027 — Learning Analytics & Knowledge（学习分析顶会，AI 方法核心）</div>
+      <div class="item-summary">LAK 是学习分析领域的顶级国际会议（SOLLEIL 学会主办），是教育数据挖掘与 AI 方法最集中的学术交流平台。历年重点主题含 AI 驱动的学习分析、教育大模型、可解释 AI 在教育中的应用等。ACM 出版，近年来录取率约 25-30%，含金量持续上升。</div>
+      <div class="item-highlight conf">💡 推荐理由：学习分析第一会、AI 方法论与应用最前沿交叉点、ACM 出版</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 SOLAR / LAK Conference</span>
+        <a href="https://www.solaresearch.org/events/lak/" target="_blank">🔗 LAK 系列会议</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDM 2027 -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">TBD</span>
+      <span class="time">2027 夏季</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">EDM</span>
+        <span class="tag tag-cfp-type">Full/Short Paper</span>
+        <span class="tag tag-conf-topic">教育数据挖掘</span>
+        <span class="tag tag-conf-tier">顶会级</span>
+        <span class="tag tag-conf-venue">2027.07 · 全球巡回</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">截稿 2027.Q1（预估）</span>
+        <span class="conf-date">2027.07 开会</span>
+        <span class="conf-location">待公布</span>
+      </div>
+      <div class="item-title">EDM 2027 — Educational Data Mining（教育数据挖掘顶会，AI 方法重镇）</div>
+      <div class="item-summary">EDM 是国际教育数据挖掘学会主办的旗舰会议，与 LAK 并称教育 AI 方法领域双璧。历年主题覆盖深度学习教育应用、知识追踪、学生建模、教育推荐系统、NLP 教育应用等。近年来 LLM 教育应用成为最热门议题，适合偏技术方向的 AI 教育研究者投稿。</div>
+      <div class="item-highlight conf">💡 推荐理由：数据挖掘+教育交叉最高水平会议、LLM 教育应用最前沿、技术氛围浓厚</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 International EDM Society</span>
+        <a href="https://educationaldatamining.org/" target="_blank">🔗 EDM 系列会议</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- L@S 2027 -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">02-15</span>
+      <span class="time">预估</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">L@S</span>
+        <span class="tag tag-cfp-type">Full/Short Paper</span>
+        <span class="tag tag-conf-topic">大规模学习 + AI</span>
+        <span class="tag tag-conf-tier">ACM 顶会</span>
+        <span class="tag tag-conf-venue">2027.06 · 全球巡回</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">截稿 2027.02（预估）</span>
+        <span class="conf-date">2027.06 开会</span>
+        <span class="conf-location">待公布</span>
+      </div>
+      <div class="item-title">L@S 2027 — ACM Learning at Scale（大规模学习与 AI 融合顶会）</div>
+      <div class="item-summary">ACM Learning at Scale（L@S）聚焦大规模在线学习环境中的技术挑战，AI 辅助教学、MOOC 智能推荐、自适应大规模测评是其核心主题。ACM 出版，近年来 LLM 赋能个性化学习、AI 教育规模化等议题极受关注，与 AI 教育产业对接紧密。</div>
+      <div class="item-highlight conf">💡 推荐理由：AI+规模化学习交叉顶会、与产业对接最紧密、ACM 品牌背书</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 ACM Learning at Scale</span>
+        <a href="https://learningatscale.acm.org/" target="_blank">🔗 L@S 会议官网</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITS 2026 -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">01-20</span>
+      <span class="time">2027</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">ITS</span>
+        <span class="tag tag-cfp-type">Full/Short Paper</span>
+        <span class="tag tag-conf-topic">智能辅导系统</span>
+        <span class="tag tag-conf-tier">CCF-C · 老牌顶会</span>
+        <span class="tag tag-conf-venue">2027.06 · 全球巡回</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">截稿 2027.01（预估）</span>
+        <span class="conf-date">2027.06 开会</span>
+        <span class="conf-location">待公布</span>
+      </div>
+      <div class="item-title">ITS 2027 — Intelligent Tutoring Systems（智能辅导系统老牌国际顶会）</div>
+      <div class="item-summary">ITS 会议始于 1988 年，是 AI 教育领域历史最悠久的国际学术会议之一。核心议题含智能辅导系统设计、对话式 AI 教学代理、情感感知学习、可解释 AI 教学等。Springer LNCS 出版，在 AI 教育交互系统领域拥有不可替代的学术地位。</div>
+      <div class="item-highlight conf">💡 推荐理由：35+ 年历史老牌顶会、智能教学系统最核心学术阵地、Springer 出版</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 ITS Conference Series</span>
+        <a href="https://its2026.its-conferences.com/" target="_blank">🔗 ITS 2026 官网</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stanford HAI AI+Education Summit -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">待公布</span>
+      <span class="time">2027 年度</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">Stanford HAI</span>
+        <span class="tag tag-cfp-type">邀请制+投稿</span>
+        <span class="tag tag-conf-topic">AI+教育未来</span>
+        <span class="tag tag-conf-tier">全球顶级</span>
+        <span class="tag tag-conf-venue">2027 · 斯坦福 · 线下</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">待公布</span>
+        <span class="conf-date">2027 春季</span>
+        <span class="conf-location">Stanford, CA</span>
+      </div>
+      <div class="item-title">Stanford HAI — AI+Education Summit（斯坦福人工智能+教育峰会）</div>
+      <div class="item-summary">斯坦福以人为本人工智能研究所（HAI）主办的年度 AI+教育高端峰会，汇聚全球 AI 教育领域的顶尖学者、产业领袖和政策制定者。2026 年已成功举办并设有 Call for Proposals 环节。含主题演讲、Workshop 和海报展示，是 AI 教育领域最高规格的产学研交流平台之一。</div>
+      <div class="item-highlight conf">💡 推荐理由：斯坦福 HAI 品牌背书、全球 AI 教育最强产学研阵容、可投稿参与</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 Stanford HAI Official</span>
+        <a href="https://hai.stanford.edu/events/ai-education-summit" target="_blank">🔗 HAI 教育峰会</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- EC-TEL 2026 -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">04-15</span>
+      <span class="time">每年 9 月</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">EC-TEL</span>
+        <span class="tag tag-cfp-type">Full/Short Paper</span>
+        <span class="tag tag-conf-topic">技术增强学习</span>
+        <span class="tag tag-conf-tier">欧洲顶会</span>
+        <span class="tag tag-conf-venue">2026.09 · 欧洲多城</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">截稿 2026.04（预估）</span>
+        <span class="conf-date">2026.09 开会</span>
+        <span class="conf-location">欧洲</span>
+      </div>
+      <div class="item-title">EC-TEL 2026 — European Conference on Technology-Enhanced Learning</div>
+      <div class="item-summary">EC-TEL 是欧洲技术增强学习领域最具影响力的年度学术会议，Springer LNCS 出版。AI 教育应用是近年来的核心主题之一，含生成式 AI 教育、学习分析、AI 素养等子方向。是欧洲 AI 教育研究者的首选投稿会议，对亚太研究者也完全开放。</div>
+      <div class="item-highlight conf">💡 推荐理由：欧洲 EdTech 学术核心阵地、AI 教育新热点反映及时、Springer 出版</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 EATEL / EC-TEL</span>
+        <a href="https://ea-tel.eu/ec-tel" target="_blank">🔗 EC-TEL 官网</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSCL 2027 -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">11-01</span>
+      <span class="time">预估</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">CSCL</span>
+        <span class="tag tag-cfp-type">Full/Short Paper</span>
+        <span class="tag tag-conf-topic">CSCL + AI</span>
+        <span class="tag tag-conf-tier">ISLS 顶会</span>
+        <span class="tag tag-conf-venue">2027.06 · 全球巡回</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">截稿 2026.11（预估）</span>
+        <span class="conf-date">2027.06 开会</span>
+        <span class="conf-location">待公布</span>
+      </div>
+      <div class="item-title">CSCL 2027 — Computer-Supported Collaborative Learning（ISLS 旗舰会议）</div>
+      <div class="item-summary">CSCL 是国际学习科学学会（ISLS）主办的旗舰会议之一，聚焦计算机支持协作学习。AI 协作学习代理、AI 辅助讨论分析、多模态学习交互等是近年来快速增长的热门方向。ISLS 出版，是学习科学与 AI 交叉领域最受认可的发表平台之一。</div>
+      <div class="item-highlight conf">💡 推荐理由：学习科学+AI 交叉核心阵地、ISLS 品牌、跨学科发表平台</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 ISLS / CSCL</span>
+        <a href="https://www.isls.org/conferences/cscl/" target="_blank">🔗 CSCL 系列会议</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- IEEE TLT Special Issue -->
+  <div class="timeline-row">
+    <div class="timeline-gutter">
+      <span class="date">TBD</span>
+      <span class="time">待公布</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">IEEE TLT</span>
+        <span class="tag tag-cfp-type">Special Issue</span>
+        <span class="tag tag-conf-topic">生成式AI教育</span>
+        <span class="tag tag-conf-tier">SCI Q1 · IEEE</span>
+        <span class="tag tag-conf-venue">期刊 · 在线</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">待 IEEE 公布</span>
+        <span class="conf-date">滚动</span>
+        <span class="conf-location">在线期刊</span>
+      </div>
+      <div class="item-title">IEEE TLT Special Issue — IEEE Transactions on Learning Technologies 特刊征稿</div>
+      <div class="item-summary">IEEE Transactions on Learning Technologies（TLT）是教育技术领域 SCI Q1 期刊，影响因子高（~3.7）。定期推出 AI 教育相关特刊，如 Generative AI in Education、AI Literacy 等主题。是教育技术+AI 方向期刊发表的顶级选择，建议持续关注官网 Call for Papers 页面。</div>
+      <div class="item-highlight conf">💡 推荐理由：SCI Q1 顶刊、IEEE 品牌、教育 AI 方向期刊发表天花板</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 IEEE TLT Official</span>
+        <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4620076" target="_blank">🔗 IEEE TLT 主页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NeurIPS Edu Workshop -->
+  <div class="timeline-row last-in-category">
+    <div class="timeline-gutter">
+      <span class="date">09-01</span>
+      <span class="time">预估</span>
+      <span class="dot dot-d"></span>
+    </div>
+    <div class="item-card">
+      <div class="stars">★★★★</div>
+      <div class="tags">
+        <span class="tag tag-conf">NeurIPS</span>
+        <span class="tag tag-cfp-type">Workshop Paper</span>
+        <span class="tag tag-conf-topic">AI教育 Workshop</span>
+        <span class="tag tag-conf-tier">NeurIPS Workshop</span>
+        <span class="tag tag-conf-venue">2026.12 · 全球巡回</span>
+      </div>
+      <div class="conf-meta-row">
+        <span class="conf-submit">截稿 2026.09（预估）</span>
+        <span class="conf-date">2026.12 Workshop</span>
+        <span class="conf-location">待公布</span>
+      </div>
+      <div class="item-title">NeurIPS 2026 — Education Workshop（NeurIPS 教育 AI Workshop，顶会附属）</div>
+      <div class="item-summary">NeurIPS 是全球 AI 领域最顶级学术会议（CCF-A），其 Education Workshop 系列（含 NeurIPS Edu、AI for Education 等 Workshop）是教育 AI 方向最具技术深度的发表平台。相较于 AIED/LAK 等教育领域会议，NeurIPS Workshop 更侧重 AI 方法创新，适合偏 CS 背景的 AI 教育研究者。</div>
+      <div class="item-highlight conf">💡 推荐理由：世界最顶级 AI 会议附属 Workshop、技术深度最高、CCF-A 品牌背书</div>
+      <div class="item-source-line">
+        <span class="item-source-name">📍 NeurIPS Official</span>
+        <a href="https://neurips.cc/" target="_blank">🔗 NeurIPS 官网</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /tab-d -->
+
+  <!-- ====== Footer ====== -->
+  <div class="page-footer">
+    <p>数据源覆盖全球 Top 50 高校官网 + 头部教育平台 + 创业加速器 + 国际学术会议</p>
+    <p>每周一 11:00 自动更新 · 仅收录权威机构免费课程、头部院校在职博士、全球顶级创业孵化与竞赛、AI 教育学术会议</p>
+  </div>
+
+</div>
+
+<script>
+function switchTab(tabId) {
+  // Hide all tab content
+  document.querySelectorAll('.category-section').forEach(s => s.classList.remove('visible'));
+  // Show selected
+  const target = document.getElementById(tabId);
+  if (target) target.classList.add('visible');
+
+  // Update active button
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`[data-tab="${tabId}"]`);
+  if (btn) btn.classList.add('active');
+}
+</script>
+</body>
+</html>
