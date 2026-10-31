@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-11-01",
+  "description": "Emilia kraft paper, book accents, ornaments and subdued note surfaces. Content jobs must not rewrite this baseline.",
+  "files": {
+    "emilia-kraft.css": "98e3609beae140a586ce8155730c163c24a36f417e8d3dfaf939259f3e760180",
+    "emilia-icons-LICENSE.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "hub.html": "8cc0c690be64ccde76d264bafa0c4c6e9cb2b66abff2c3fae26e80266b8d3115",
+    "index.html": "b3eebf73a0dad290d27de4d2f91697d1c0194ef615415ad3de5632b1a8e854ab",
+    "ai-product-tech-practice/style.css": "aac236925f48bf592d99d8526103d75886be38479398f1bf11ef71235b73db83",
+    "ai-product-tech-practice/app.js": "828326d99242a1d47e92c25a361a84d1bb4db6d2ab48e72f7b515f38cda122d8",
+    "ai-product-tech-practice/core.js": "54f604789e65a87608811a2e90564a09a7de1f343d3d85f5bd61f94eb8cfc2df",
+    "edtech-product-research/style.css": "2094526a38cffdf37327db03e7a85e8469784a219b974cbaeafdf42edd0a21a1",
+    "edtech-product-research/app.js": "9fadc36b4bc3356677115325389d1c60e5ce6aec747006ef81c4595e9d1eed36",
+    "emilia-assets/weekly.webp": "8957b83f994d0651c5f54c41ec4f49a866b8fc10a56d0180f91d645e83d59e76",
+    "emilia-assets/design.webp": "a77c1b6da75951fadc8053f311c12e082b2f5584b38d6df82022d6b6cc8e51d0",
+    "emilia-assets/opportunities.webp": "0302f4906fb3a9fc00b58f60bd76fa85326f22ea550d15f23d3463161798286e",
+    "emilia-assets/research.webp": "5d4a9362e475f56f7e200c98a9b3e6e9b8e3a9fb6f99b06a9d6e73b46f4d6108",
+    "emilia-assets/README.md": "57e3de16e0e16c70ca135d981d35be248ec3d94b6bf2f83da12cc02bf13c2556",
+    "emilia-assets/practice.webp": "73205823ef3aa3ecf0e8211124adfe73c808e570c022189380d046b32107f7e9",
+    "emilia-assets/library.json": "c15765f67d5b1abb7e6c15e4bdf9e7b1f681a4abdcaeec9026f5379815fde94a",
+    "scripts/check_ui.py": "5a42fbb19913e0834b972ff4969640e054547f54daf1d4b744f88a857d7b624e"
+  },
+  "pages": {
+    "Ed_Tech_Opportunity.html": {
+      "theme": "opportunities",
+      "stylesheets": [
+        {
+          "id": "emilia-kraft-theme",
+          "rel": "stylesheet",
+          "href": "emilia-kraft.css?v=20261101-paper2"
+        }
+      ],
+      "ui_blocks": [
+        [
+          "style",
+          {},
+          "4e01673db48adb2d5931f4204bcef0f4e347f844a6070359adac4dae93c75539"
+        ],
+        [
+          "style",
+          {
+            "id": "reading-room-theme"
+          },
+          "bb112352635d926d57c6db07dd257808c24e5c5013caadf4d43fa053806c165a"
+        ],
+        [
+          "style",
+          {
+            "id": "reading-room-column-palette"
+          },
+          "3a87a8c26fcbe4b5657f4977bf08d0b041a033c08b9b327faac791bcb00c920e"
+        ],
+        [
+          "script",
+          {},
+          "48e5a745c104c53d29c5b77d854123ac31da8ceb1ac514bd9dd30b5084b20ecc"
+        ]
+      ],
+      "navigation": [
+        "3b09db9a163b697de64b2e9cfc5b839ba9543dbd35894b6f531415dc9a55b49e",
+        "6ac0be6b38d5f6b301619b890f136bfb8190c5b7c71de997628b98ffbb431a51"
+      ],
+      "icons": 2,
+      "allowed_inline_styles": [
+        "border-left-color: var(--cat-c); background: var(--cat-c-light);",
+        "border-left-color: var(--cat-d); background: var(--cat-d-light);",
+        "margin-top:18px",
+        "position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)"
+      ]
+    },
+    "ai-product-tech-practice/index.html": {
+      "theme": "practice",
+      "stylesheets": [
+        {
+          "rel": "stylesheet",
+          "href": "style.css?v=1"
+        },
+        {
+          "id": "emilia-kraft-theme",
+          "rel": "stylesheet",
+          "href": "../emilia-kraft.css?v=20261101-paper2"
+        }
+      ],
+      "ui_blocks": [
+        [
+          "script",
+          {
+            "defer": null,
+            "src": "core.js?v=1"
+          },
+          "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        ],
+        [
+          "script",
+          {
+            "defer": null,
+            "src": "app.js?v=1"
+          },
+          "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        ]
+      ],
+      "navigation": [
+        "ee7822ba65116268dff9a7b95becc0f45e896246f0620d8c53ab45dfa26ed4b7",
+        "87528ec5add9c71c4773ade1e943d5b1b20c01e8af34404ddd1e3bb5a649d4b3"
+      ],
+      "icons": 2,
+      "allowed_inline_styles": []
+    },
+    "edtech-product-research/index.html": {
+      "theme": "research",
+      "stylesheets": [
+        {
+          "rel": "stylesheet",
+          "href": "style.css?v=20261101"
+        },
+        {
+          "id": "emilia-kraft-theme",
+          "rel": "stylesheet",
+          "href": "../emilia-kraft.css?v=20261101-paper2"
+        }
+      ],
+      "ui_blocks": [
+        [
+          "script",
+          {
+            "type": "module",
+            "src": "app.js?v=20261101b"
+          },
+          "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        ]
+      ],
+      "navigation": [
+        "b394cfd81bde707b5efe0bd2056b72dcfc2352e9b607dc5208225be893a823d7"
+      ],
+      "icons": 1,
+      "allowed_inline_styles": []
+    }
+  },
+  "site": "https://moobaabaa-bot.github.io/ed-tech-opportunity/"
+}
