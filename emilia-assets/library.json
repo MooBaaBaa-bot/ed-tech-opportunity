@@ -1,0 +1,57 @@
+[
+  {
+    "id": "opportunities",
+    "title": "EdTech Opportunities",
+    "label": "Discover what comes next.",
+    "description": "Academic opportunities, courses and new directions in education.",
+    "category": "OPPORTUNITIES",
+    "height": 346,
+    "width": 50.17,
+    "tilt": "-2deg",
+    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/Ed_Tech_Opportunity.html?palette=20261101"
+  },
+  {
+    "id": "weekly",
+    "title": "AI Education Weekly",
+    "label": "A wider view, every week.",
+    "description": "Ideas, research and products shaping the future of learning.",
+    "category": "THE WEEKLY EDITION",
+    "height": 390,
+    "width": 47.77,
+    "tilt": "1deg",
+    "url": "https://moobaabaa-bot.github.io/ai-edu-weekly/AI%E6%95%99%E8%82%B2%E5%91%A8%E6%8A%A5.html?palette=20261101"
+  },
+  {
+    "id": "design",
+    "title": "Instructional Design",
+    "label": "One concept. A deeper understanding.",
+    "description": "Learning theories and teaching strategies, one thoughtful read at a time.",
+    "category": "DAILY LEARNING",
+    "height": 362,
+    "width": 76.32,
+    "tilt": "-1deg",
+    "url": "https://moobaabaa-bot.github.io/instructional-design-daily/index.html?palette=20261101"
+  },
+  {
+    "id": "practice",
+    "title": "AI Product Practice",
+    "label": "Turn understanding into practice.",
+    "description": "Small experiments, real cases and a growing toolkit for product thinking.",
+    "category": "THE PRACTICE SERIES",
+    "height": 410,
+    "width": 73.12,
+    "tilt": "2deg",
+    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/ai-product-tech-practice/#/learn/aptl-01"
+  },
+  {
+    "id": "research",
+    "title": "EdTech Product Research",
+    "label": "Look closer. Ask better questions.",
+    "description": "Product histories, evidence and the mechanisms behind learning experiences.",
+    "category": "FIELD NOTES",
+    "height": 375,
+    "width": 46.17,
+    "tilt": "-1deg",
+    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/edtech-product-research/"
+  }
+]
