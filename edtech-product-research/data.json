@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "categories": ["自主学习", "高等教育", "K-12", "语言学习", "教师工具", "企业学习", "阅读", "数学", "作业辅导", "综合学习"],
+  "schedule": {"name":"EdTech 产品更新盘点","timezone":"America/Los_Angeles","description":"每周一 12:00 计划启动；完成时间以实际发布为准。","status":"待接通","note":"网站已建立；原有任务的配置及停用状态尚未核实，未启动第二个自动发布执行器。"},
+  "sources": [
+    {"id":"d2l-quiz","title":"D2L 官方帮助：生成与审核测验题","url":"https://community.d2l.com/brightspace/kb/articles/26318-generate-quiz-questions-using-d2l-lumi-quiz","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"d2l-intro","title":"D2L 官方：Lumi 产品预览（2024）","url":"https://www.d2l.com/en-eu/newsroom/d2l-lumi-helps-transform-the-learning-platform-experience/","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"khan-home","title":"Khanmigo 官方产品说明","url":"https://www.khanmigo.ai/","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"khan-tests","title":"Khan Academy：AI 辅导产品实验与衡量方式","url":"https://blog.khanacademy.org/how-khan-academy-is-building-a-better-ai-tutor-our-most-recent-learnings/","verifiedAt":"2026-10-31T17:15:00Z","type":"厂商效果主张"},
+    {"id":"magic-home","title":"MagicSchool 官方产品页面","url":"https://www.magicschool.ai/","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"magic-oct","title":"MagicSchool：October MagicDrop（2026-10-27）","url":"https://www.magicschool.ai/blog-posts/october-magicdrop-whats-new-in-magicschool","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"speak-home","title":"Speak 官方：Learn / Practice / Apply","url":"https://www.speak.com/","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"speak-call","title":"Speak：AI Tutor Call（2026-10-20）","url":"https://www.speak.com/blog/your-tutor-is-one-call-away-introducing-ai-tutor-call","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"openmaic-repo","title":"OpenMAIC 官方开源仓库与部署说明","url":"https://github.com/THU-MAIC/OpenMAIC","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"openmaic-130","title":"OpenMAIC v1.3.0 正式发布说明","url":"https://github.com/THU-MAIC/OpenMAIC/releases/tag/v1.3.0","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
+    {"id":"gauth-home","title":"Gauth 官方：输入题目、分步讲解与导师服务","url":"https://www.gauth.com/","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"}
+  ],
+  "products": [
+    {"id":"d2l-lumi","name":"D2L Lumi","aliases":["Lumi Quiz"],"company":"D2L","country":"待独立核验","website":"https://www.d2l.com/lumi/","category":"高等教育","scene":"课程教师制作题目与反馈","summary":"嵌入 Brightspace 工作流的 AI 教学工具，本档案重点研究出题与人工审核。","status":"基线已核验","productStatus":"官方文档可访问；具体机构权限待核验","completeness":"中：聚焦测验流程，未覆盖整个套件","evidence":"功能：官方操作文档；学习效果：本次未评估独立研究","verifiedAt":"2026-10-31T17:15:00Z","updatedAt":"2026-10-31T17:15:00Z","highlights":["由课程材料生成题目","可选认知层级与学习成果","逐题保留、编辑或丢弃后存入题库"],"facts":[
+      {"label":"核心流程","text":"选择资料与题型 → 生成 → 审核与编辑 → 保存到题库。","type":"官方功能事实","sources":["d2l-quiz"]},
+      {"label":"目标用户与领域","text":"使用 Brightspace 的课程教师与课程作者；学科取决于输入资料。","type":"官方功能事实","sources":["d2l-intro","d2l-quiz"]},
+      {"label":"教师控制","text":"教师选择来源、学习成果和可用认知层级；逐题决定是否保留。AI 参与标记在题库中可见，学生端不显示。","type":"官方功能事实","sources":["d2l-quiz"]},
+      {"label":"学习机制／教育理念","text":"分析：把出题放回课程目标与教师审核环节，而非直接把生成内容交给学生；选中某个认知标签不等于题目已达到该层级。","type":"分析推测","sources":["d2l-quiz"]},
+      {"label":"核心技术与个性化","text":"官方披露 AI 生成；本次资料不足以确定基础模型、检索架构或学习者个体模型。教师配置不等于学习者自适应。","type":"待核验信息","sources":["d2l-quiz"]},
+      {"label":"商业模式／融资阶段","text":"机构端产品；具体套餐、报价与当前融资信息未核验。","type":"待核验信息","sources":["d2l-intro"]}
+    ],"unknowns":["题目质量与教师审核耗时的独立比较证据","不同机构套餐和权限差异","生成反馈能否提高迁移与延迟保持"]},
+    {"id":"khanmigo","name":"Khanmigo","aliases":[],"company":"Khan Academy","country":"待独立核验","website":"https://www.khanmigo.ai/","category":"K-12","scene":"练习中的辅导、教师备课与写作支持","summary":"结合可汗学院内容与练习情境的 AI 辅导和教师助手。","status":"基线已核验","productStatus":"公开产品页面可访问；地区与账户资格需另查","completeness":"中：教学定位明确，开放限制待补","evidence":"功能：官方资料；效果：厂商产品实验，不等于长期独立验证","verifiedAt":"2026-10-31T17:15:00Z","updatedAt":"2026-10-31T17:15:00Z","highlights":["引导学生思考而非只呈现答案","接入可汗学院内容库","教师备课与量规等工具"],"facts":[
+      {"label":"目标用户／学科","text":"学生、家长和教师；官网举例包含数学、编程与写作。","type":"官方功能事实","sources":["khan-home"]},
+      {"label":"核心流程与学习机制","text":"在练习情境中提出问题，接受引导，再尝试作答。分析：关键是支持后能否独立完成下一题，而非对话是否顺畅。","type":"分析推测","sources":["khan-home","khan-tests"]},
+      {"label":"个性化与技术","text":"官方实验报告讨论结构化学习历史和数学校验模块；不据此推断所有用户、科目与版本都使用同一配置。","type":"官方功能事实","sources":["khan-tests"]},
+      {"label":"学习评估／效果证据","text":"厂商报告使用响应延迟、认知参与及同技能下一题独立正确率等指标。这类短期产品指标不能单独证明长期迁移。","type":"厂商效果主张","sources":["khan-tests"]},
+      {"label":"教师控制／商业模式","text":"官网提供教师工具免费入口；学生、家庭与学区访问方式不同。具体权限、价格与当前模型版本待核验。","type":"官方功能事实","sources":["khan-home"]}
+    ],"unknowns":["当前地区与未成年人使用限制","长期学习增益及独立复现","教师可见对话范围与具体处置流程"]},
+    {"id":"magicschool","name":"MagicSchool","aliases":["Raina","Student Rooms"],"company":"Magic School, Inc.","country":"待独立核验","website":"https://www.magicschool.ai/","category":"教师工具","scene":"备课、材料编辑与学校管理学生 AI 使用","summary":"把教学内容生成工具与学生 AI 活动管理放在同一平台。","status":"持续追踪","productStatus":"官方发布更新；功能依套餐和学区设置而异","completeness":"中：本期重点为编辑与使用边界","evidence":"官方功能公告；未进行登录实测或独立效果评估","verifiedAt":"2026-10-31T17:15:00Z","updatedAt":"2026-10-31T17:15:00Z","highlights":["教学计划与课堂材料工具","基于自定义标准的写作反馈","学区级 Student Rooms 使用控制"],"facts":[
+      {"label":"内容与使用流程","text":"教师选择教学任务，提供目标和材料，再修订生成内容；官网展示教案、演示文稿和写作反馈等入口。","type":"官方功能事实","sources":["magic-home"]},
+      {"label":"教师／管理员控制","text":"2026 年 10 月公告说明学区管理员可设置每日暂停时段，覆盖正在进行的 Student Rooms 会话。","type":"官方功能事实","sources":["magic-oct"]},
+      {"label":"教育理念与个性化","text":"分析：教学目标和教师提供的条件约束内容生成；行政使用边界与教学质量审核是两个不同层面的控制。","type":"分析推测","sources":["magic-home","magic-oct"]},
+      {"label":"核心技术／效果证据","text":"可确认生成式 AI 教学工具及编辑功能；当前基础模型、完整数据路径和学习因果效应未核验。","type":"待核验信息","sources":["magic-home"]},
+      {"label":"商业模式","text":"有教师免费入口及学校／学区方案；具体价格与功能配额未核验。","type":"官方功能事实","sources":["magic-home"]}
+    ],"unknowns":["暂停期间学生作品如何保存和恢复","不同地区、套餐的开放差异","节省备课时间是否转化为学习质量提升"]},
+    {"id":"speak","name":"Speak","aliases":["Speak Tutor"],"company":"Speak（法律主体待核验）","country":"待独立核验","website":"https://www.speak.com/","category":"语言学习","scene":"口语表达、情境练习与对话反馈","summary":"围绕学习表达、重复练习和实际对话组织 AI 口语学习。","status":"持续追踪","productStatus":"官方产品与功能公告可访问；账号开放情况未实测","completeness":"中：口语闭环已核验，套餐与语种边界待补","evidence":"官方功能说明；不把用户评论或练习量当能力增益","verifiedAt":"2026-10-31T17:15:00Z","updatedAt":"2026-10-31T17:15:00Z","highlights":["Learn → Practice → Apply 学习循环","开放话题 AI 通话","通话反馈可转成后续练习"],"facts":[
+      {"label":"教学流程／理念","text":"官网将课程组织为学习表达、在不同情境反复练习、再进入对话应用。分析：练习机会增加不等于真实交流能力已经提升。","type":"官方功能事实","sources":["speak-home"]},
+      {"label":"个性化与反馈","text":"AI Tutor Call 公告称可延续过往对话，并把反复出现的错误转为练习；长期记忆的具体技术实现未披露。","type":"官方功能事实","sources":["speak-call"]},
+      {"label":"教师控制／核心技术","text":"本次核验面向个人口语学习流程；教师控制、语音模型及评测校准方法未核验。","type":"待核验信息","sources":["speak-home"]},
+      {"label":"商业模式／效果证据","text":"具体订阅价格与地区差异待核验；厂商练习参与度表述不能替代独立口语水平评估。","type":"待核验信息","sources":["speak-call"]}
+    ],"unknowns":["具体语种、地区、套餐开放范围","错误诊断与练习推荐是否准确","线下陌生话题交流的迁移效果"]},
+    {"id":"openmaic","name":"OpenMAIC","aliases":["Open Multi-Agent Interactive Classroom"],"company":"THU-MAIC 开源项目","country":"待团队主页进一步核验","website":"https://open.maic.chat/","category":"高等教育","scene":"以课程材料生成并编辑多智能体互动课堂","summary":"可部署的多智能体课堂项目，结合课程生成、材料管理与课堂交互。","status":"持续追踪","productStatus":"开源版本 v1.3.0 已发布；不等同于在线站点已升级","completeness":"中：发布文档充分，教学效果与在线状态待补","evidence":"官方代码与版本说明；未将开源能力当作线上实测","verifiedAt":"2026-10-31T17:15:00Z","updatedAt":"2026-10-31T17:15:00Z","highlights":["对话式课程创建与页面编辑","知识库材料复用","Pro 课堂 Learn / Edit 切换"],"facts":[
+      {"label":"内容与核心流程","text":"提供主题或材料，生成课堂并调整页面；Pro 工作台为课程制作提供对话与课堂视图。","type":"官方功能事实","sources":["openmaic-repo"]},
+      {"label":"核心技术","text":"仓库说明列出模型服务配置、工具调用和服务端运行；部署能力取决于所选模型、服务与配置。","type":"官方功能事实","sources":["openmaic-repo"]},
+      {"label":"教师控制","text":"v1.3.0 的 Pro 课堂标签支持学习／编辑切换；经典生成尚未完成时不可编辑。","type":"官方功能事实","sources":["openmaic-130"]},
+      {"label":"教育理念／学习机制","text":"分析：把抽象问答转成有材料与顺序的课堂，但多角色呈现本身不能证明有效的同伴学习或个性化。","type":"分析推测","sources":["openmaic-repo"]},
+      {"label":"商业模式／效果证据","text":"公开开源项目；模型与部署可能产生费用。未核验商用托管套餐，也未将项目演示视为学习效果研究。","type":"待核验信息","sources":["openmaic-repo"]}
+    ],"unknowns":["在线体验站与开源版本是否一致","材料解释错误的识别与修正效率","课堂角色互动相对单一辅导的增益"]},
+    {"id":"gauth","name":"Gauth","aliases":[],"company":"待法律条款核验","country":"待核验","website":"https://www.gauth.com/","category":"作业辅导","scene":"输入或拍摄题目，查看分步讲解","summary":"以题目输入、分步解答与解释为核心的 AI 学习辅助产品。","status":"基线已核验","productStatus":"官网可访问；未验证付费导师履约","completeness":"中：核心交互可核验，公司与权限资料待补","evidence":"公开产品界面与官方描述；没有本次实测证据","verifiedAt":"2026-10-31T17:15:00Z","updatedAt":"2026-10-31T17:15:00Z","highlights":["文本与图片题目入口","逐步展示解题过程","官网提供真人导师服务入口"],"facts":[
+      {"label":"目标用户／学科","text":"需要作业与题目帮助的学习者；官网列出数学、微积分、化学、生物等学科入口。","type":"官方功能事实","sources":["gauth-home"]},
+      {"label":"核心流程／内容来源","text":"输入或上传题目后获得解答与解释；官网同时宣传真人导师服务。实际可用地区、时效和条件未核验。","type":"官方功能事实","sources":["gauth-home"]},
+      {"label":"学习机制／教育理念","text":"分析：分步示例有助于观察解题路径，但应让学习者先尝试、再解释关键一步，避免把看懂答案当作会做题。","type":"分析推测","sources":["gauth-home"]},
+      {"label":"个性化／教师控制／核心技术","text":"官网未提供足够依据确认知识追踪、长期学习模型或教师控制范围；不推断底层模型与检索架构。","type":"待核验信息","sources":["gauth-home"]},
+      {"label":"商业模式／效果证据","text":"官网有升级与试用入口；报价、自动续订条件及独立学习效果研究未在本次核验。","type":"待核验信息","sources":["gauth-home"]}
+    ],"unknowns":["法律主体与公司归属","付费条件及不同地区可用性","即时作答正确率与长期独立解题表现"]}
+  ],
+  "events": [
+    {"id":"magicschool-20261027-room-pause","productId":"magicschool","version":1,"type":"开放范围／管理控制","classification":"本期变化","title":"学区可设置学生 AI 使用暂停时段","before":"未采集旧版权限说明，不推断过去完全不可控制。","after":"每日暂停窗口可统一作用于学区 Student Rooms，包含已开始的会话。","availability":"面向学区管理员；具体套餐和地区清单未披露。","impact":"分析：把使用边界前置到组织政策，不再只依赖每节课的人工提醒。","technology":"官方披露的是权限与调度行为，不据此推断模型架构。","limitations":"时间控制不能替代内容安全审核或学习效果评价。","announcedAt":"2026-10-27","availableAt":null,"discoveredAt":"2026-10-31T17:15:00Z","verifiedAt":"2026-10-31T17:15:00Z","sources":["magic-oct"],"evidenceType":"官方功能事实","revisionNote":"首次收录；非亲身实测。"},
+    {"id":"magicschool-20261027-editor","productId":"magicschool","version":1,"type":"流程变化","classification":"本期变化","title":"教材编辑流程纳入图像生成与格式保留","before":"公告描述减少跨工具搬运；未独立保存旧界面。","after":"编辑器内可生成／替换图片；改写和导出支持保留格式。Raina 可用选项追问补充条件。","availability":"功能以账户套餐和学区配置为准；未核验全部账户开放时间。","impact":"分析：减少材料加工中的切换；默认条件仍需教师检查。","technology":"已确认交互功能；图像模型、路由与数据处理未核验。","limitations":"可生成插图不代表学科关系与图中文字准确。","announcedAt":"2026-10-27","availableAt":null,"discoveredAt":"2026-10-31T17:15:00Z","verifiedAt":"2026-10-31T17:15:00Z","sources":["magic-oct"],"evidenceType":"官方功能事实","revisionNote":"同一公告下的另一工作流变化，非另一产品发布。"},
+    {"id":"openmaic-v130","productId":"openmaic","version":1,"type":"版本发布／流程变化","classification":"本期变化","title":"OpenMAIC v1.3.0：知识库正式版与 Pro 工作台升级","before":"知识库已在 10 月 22 日候选版出现，不能视为本周首次提出。","after":"正式版整合知识库，并增加生成首张页面前的请求预览与课堂 Learn / Edit 切换。","availability":"2026-10-29 发布开源正式版；Pro 需部署启用，在线站点版本未确认。","impact":"分析：材料复用与可见生成进度改善课程制作的连续性，编辑入口让人工修订更靠近学习视图。","technology":"官方说明材料保留、一次解析复用及服务端配置；无依据推断其教学诊断模型。","limitations":"升级有数据迁移与兼容要求；本记录不是部署操作指南。教学质量增益未验证。","announcedAt":"2026-10-29T09:20:16Z","availableAt":"2026-10-29T09:20:16Z","discoveredAt":"2026-10-31T17:15:00Z","verifiedAt":"2026-10-31T17:15:00Z","sources":["openmaic-130"],"evidenceType":"官方功能事实","revisionNote":"区分候选版首次出现与正式版开放阶段。"},
+    {"id":"speak-20261020-tutor-call","productId":"speak","version":1,"type":"功能升级","classification":"补收录","title":"Speak AI Tutor Call：从对话反馈转向后续练习","before":"本次未保存旧版对话体验，不作完整前后比较。","after":"公告介绍开放话题通话、跨次对话延续，以及将反复错误转为练习。","availability":"具体语种、地区、套餐和分批开放时间待核验。","impact":"分析：值得观察反馈是否真正进入下一次练习，而非停留在通话总结。","technology":"官方说明实时回应与对话延续；底层语音和记忆架构未知。","limitations":"官网参与度主张不是独立口语能力提升证据。","announcedAt":"2026-10-20","availableAt":null,"discoveredAt":"2026-10-31T17:15:00Z","verifiedAt":"2026-10-31T17:15:00Z","sources":["speak-call"],"evidenceType":"官方功能事实","revisionNote":"早于本期窗口，作为历史补收录，不计本周新变化。"}
+  ],
+  "articles": [{"id":"lumi-review-gate","productId":"d2l-lumi","title":"AI 出题之后，教师的控制权放在哪里？","subtitle":"以 D2L Lumi Quiz 为例，区分“能编辑”和“能判断”。","kind":"常青机制研究 · AI 辅助分析 · 非实测","verifiedAt":"2026-10-31T17:15:00Z","sources":["d2l-quiz"],"flow":["设定学习目标","选择来源与题型","生成候选题","人工审核","入库后使用"],"sections":[
+    {"heading":"研究问题","body":"生成式 AI 让制作题目变得容易，但课程设计的责任不会随之消失。值得追问的不是“能出多少道题”，而是教师在什么时刻知道哪些内容需要检查、能否阻止不合格题目进入教学。本篇基于公开文档分析，不代表作者登录实测，也不评价产品整体优劣。","type":"分析推测","sources":[]},
+    {"heading":"用户任务与可确认流程","body":"教师希望把课程材料转成可用测验。官方文档描述：选择材料和题型、可选学习成果或认知层级，生成后逐题审核，再保存到题库。审核时可以修改、保留或丢弃。这构成可观察的人工决策节点，而不是“生成即发布”。","type":"官方功能事实","sources":["d2l-quiz"]},
+    {"heading":"教学机制：目标约束不等于认知保证","body":"分析：流程把目标、材料和评价对象相连，为课程一致性创造条件。但若选择“分析”层级后，题目只是从材料复述一句定义，标签并未兑现。审核需要一个外部标准：学生必须完成何种认知操作，什么错误选项能够暴露误解，答案是否依赖课程未教过的知识。判断这些内容仍需要教师专业知识。","type":"分析推测","sources":[]},
+    {"heading":"技术依据与不能推断的部分","body":"可确认的是输入资料、生成选项与审核保存的产品流程。仅凭这些界面，不能确定模型供应商、检索增强架构或内部质量评估机制。把“可以使用课程资料”写成“保证只根据课程资料回答”，会跨过现有证据的边界。","type":"分析推测","sources":["d2l-quiz"]},
+    {"heading":"控制与异常：审核应当有退出路径","body":"分析：教师可以放弃不适合的候选题，意味着生成失败不必变成教学失败。更有价值的评测不是点击了多少次“接受”，而是错误能否被发现、修正成本多高、放弃后是否仍能手动完成任务。还应分别测试错误答案、模糊题干、暗含文化偏见及多个正确选项；本次没有执行这些测试，不报告通过率。","type":"分析推测","sources":[]},
+    {"heading":"效果证据：节省时间只是第一层","body":"本次来源是功能说明，不是独立学习效果试验。建议把未来验证拆为三层：制作效率（从资料到可用题的总时间，含审核）；评价质量（盲评题目与目标的匹配程度）；学生表现（独立作答、延迟保持与迁移）。点击保留率高，可能是题目好，也可能是审核不充分，不能直接作为质量指标。","type":"分析推测","sources":[]},
+    {"heading":"可迁移的产品判断","body":"分析：面向教师的 AI 产品应让关键选择可见、候选结果可拒绝、人工修改可追踪。评测任务应覆盖“没有 AI 也能完成”的退路。相比再增加一个生成按钮，更值得研究的是审核界面是否把风险集中呈现，以及是否把教师注意力引向最需要判断的地方。","type":"分析推测","sources":[]},
+    {"heading":"仍不能下的结论／可选观察","body":"不能据现有材料断言 Lumi 提高了学生成绩、降低了所有教师的工作量，或在所有学科都优于人工出题。可用 5—10 分钟设计一个观察任务：拿同一段课程材料，先写下目标认知动作，再看一组候选题是否真的要求该动作。只检查“答案对不对”与检查“测到了什么”，会得到怎样不同的判断？","type":"分析推测","sources":[]}
+  ]}],
+  "issues": [{"id":"2026-11-02-preview","version":1,"title":"让 AI 进入教学，也让人保有控制","windowStart":"2026-10-26T12:00:00-07:00","windowEnd":"2026-11-02T12:00:00-08:00","timezone":"America/Los_Angeles","status":"周期内预览／首次建档","asOf":"2026-10-31T17:15:00Z","generatedAt":"2026-10-31T17:16:52Z","publishedAt":null,"summary":"本次建立 6 个产品基线，确认 2 个产品的 3 条本期变化：MagicSchool 的使用时段控制与编辑流程，以及 OpenMAIC v1.3.0。另补收录 Speak 10 月 20 日的通话功能。统计周期尚未结束，这不是完整周报。","eventIds":["magicschool-20261027-room-pause","magicschool-20261027-editor","openmaic-v130"],"backfillIds":["speak-20261020-tutor-call"],"articleIds":["lumi-review-gate"],"coverage":["d2l-lumi","khanmigo","magicschool","speak","openmaic","gauth"],"limitations":["只核验 6 个选定候选，不代表完整产品库或全市场覆盖。","检索截至窗口中途；未发现新公告的产品不等于没有变化。","D2L 地区营销页返回 403，改用官方帮助中心与公告；未登录各产品验证账号权限。","Gauth 新入口缺少准确上线日期，仅写入基线；不把抓取日期当发布日期。","独立学习效果研究不是本轮的系统检索范围；原有综合分不作公开排名。"],"revisionNote":"首版；产品建档不是新产品发布。完整周度任务尚未接通。"}],
+  "runs": [{"id":"baseline-20261101","issueId":"2026-11-02-preview","scheduledFor":null,"startedAt":null,"researchCompletedAt":"2026-10-31T17:15:00Z","generatedAt":"2026-10-31T17:16:52Z","publishAttemptedAt":"2026-10-31T17:16:52Z","verifiedAt":null,"status":"发布中","note":"手动首次建档，不是定时任务运行；未记录精确开始时刻，留空而不补造。"}],
+  "pending": [{"productId":"gauth","question":"公司法律主体、地区、开放日期尚未核实；不将旧库字段直接视为事实。"},{"productId":"openmaic","question":"开源版本与在线体验站是否同步，须分别验证。"}]
+}
