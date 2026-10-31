@@ -1,9 +1,9 @@
 {
   "version": 1,
   "reviewedAt": "2026-11-01",
-  "description": "Emilia kraft paper, book accents, ornaments and subdued note surfaces. Content jobs must not rewrite this baseline.",
+  "description": "Emilia AI Studio editorial interiors; independent volumes with return-to-bookshelf navigation. Homepage and content/storage preserved.",
   "files": {
-    "emilia-kraft.css": "98e3609beae140a586ce8155730c163c24a36f417e8d3dfaf939259f3e760180",
+    "emilia-kraft.css": "02921bb8f78a23bae81dcd49f90319d4efc60f059e73abe918a5dc219302425f",
     "emilia-icons-LICENSE.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
     "hub.html": "72b15bff7c5867c76da3647b0fc0c53b399e46a77a43eb14341b22e7466a2f71",
     "index.html": "b3eebf73a0dad290d27de4d2f91697d1c0194ef615415ad3de5632b1a8e854ab",
@@ -28,7 +28,7 @@
         {
           "id": "emilia-kraft-theme",
           "rel": "stylesheet",
-          "href": "emilia-kraft.css?v=20261101-paper2"
+          "href": "emilia-kraft.css?v=20261101-studio1"
         }
       ],
       "ui_blocks": [
@@ -58,7 +58,7 @@
         ]
       ],
       "navigation": [
-        "3b09db9a163b697de64b2e9cfc5b839ba9543dbd35894b6f531415dc9a55b49e",
+        "64e8573c89d1ebdd27dc9afb305f5ef5b156ec09f425469dca5d0f0e7b561da9",
         "6ac0be6b38d5f6b301619b890f136bfb8190c5b7c71de997628b98ffbb431a51"
       ],
       "icons": 2,
@@ -79,7 +79,7 @@
         {
           "id": "emilia-kraft-theme",
           "rel": "stylesheet",
-          "href": "../emilia-kraft.css?v=20261101-paper2"
+          "href": "../emilia-kraft.css?v=20261101-studio1"
         }
       ],
       "ui_blocks": [
@@ -101,7 +101,7 @@
         ]
       ],
       "navigation": [
-        "ee7822ba65116268dff9a7b95becc0f45e896246f0620d8c53ab45dfa26ed4b7",
+        "a5f912b1cec571ed00d71abb1072675a4e0ba166c8ca7df11d842b00ee74f9e7",
         "87528ec5add9c71c4773ade1e943d5b1b20c01e8af34404ddd1e3bb5a649d4b3"
       ],
       "icons": 2,
@@ -117,7 +117,7 @@
         {
           "id": "emilia-kraft-theme",
           "rel": "stylesheet",
-          "href": "../emilia-kraft.css?v=20261101-paper2"
+          "href": "../emilia-kraft.css?v=20261101-studio1"
         }
       ],
       "ui_blocks": [
@@ -131,6 +131,7 @@
         ]
       ],
       "navigation": [
+        "1a78bc3ab1c777cb735e6c825eafde6b6a2a776ecde3365ed8fba84e8453165a",
         "b394cfd81bde707b5efe0bd2056b72dcfc2352e9b607dc5208225be893a823d7"
       ],
       "icons": 1,
