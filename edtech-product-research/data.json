@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "categories": ["自主学习", "高等教育", "K-12", "语言学习", "教师工具", "企业学习", "阅读", "数学", "作业辅导", "综合学习"],
-  "schedule": {"name":"EdTech 产品更新盘点","timezone":"America/Los_Angeles","description":"每周一 12:00 计划启动；完成时间以实际发布为准。","status":"待接通","note":"网站已建立；原有任务的配置及停用状态尚未核实，未启动第二个自动发布执行器。"},
+  "schedule": {"name":"EdTech 产品更新盘点","timezone":"America/Los_Angeles","description":"每周一 12:00 计划启动；完成时间以实际发布为准。","status":"待启用","note":"用户已确认此前没有定时更新；后续由 Codex 独立研究与发布，启用状态以实际保存的任务为准。"},
   "sources": [
     {"id":"d2l-quiz","title":"D2L 官方帮助：生成与审核测验题","url":"https://community.d2l.com/brightspace/kb/articles/26318-generate-quiz-questions-using-d2l-lumi-quiz","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
     {"id":"d2l-intro","title":"D2L 官方：Lumi 产品预览（2024）","url":"https://www.d2l.com/en-eu/newsroom/d2l-lumi-helps-transform-the-learning-platform-experience/","verifiedAt":"2026-10-31T17:15:00Z","type":"官方功能事实"},
