@@ -8,7 +8,7 @@
     "height": 346,
     "width": 50.17,
     "tilt": "-2deg",
-    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/Ed_Tech_Opportunity.html?palette=20261101"
+    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/Ed_Tech_Opportunity.html?palette=20261101&theme=kraft-20261101"
   },
   {
     "id": "weekly",
@@ -19,7 +19,7 @@
     "height": 390,
     "width": 47.77,
     "tilt": "1deg",
-    "url": "https://moobaabaa-bot.github.io/ai-edu-weekly/AI%E6%95%99%E8%82%B2%E5%91%A8%E6%8A%A5.html?palette=20261101"
+    "url": "https://moobaabaa-bot.github.io/ai-edu-weekly/AI%E6%95%99%E8%82%B2%E5%91%A8%E6%8A%A5.html?palette=20261101&theme=kraft-20261101"
   },
   {
     "id": "design",
@@ -30,7 +30,7 @@
     "height": 362,
     "width": 76.32,
     "tilt": "-1deg",
-    "url": "https://moobaabaa-bot.github.io/instructional-design-daily/index.html?palette=20261101"
+    "url": "https://moobaabaa-bot.github.io/instructional-design-daily/index.html?palette=20261101&theme=kraft-20261101"
   },
   {
     "id": "practice",
@@ -41,7 +41,7 @@
     "height": 410,
     "width": 73.12,
     "tilt": "2deg",
-    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/ai-product-tech-practice/#/learn/aptl-01"
+    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/ai-product-tech-practice/?theme=kraft-20261101#/learn/aptl-01"
   },
   {
     "id": "research",
@@ -52,6 +52,6 @@
     "height": 375,
     "width": 46.17,
     "tilt": "-1deg",
-    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/edtech-product-research/?v=48fccf3"
+    "url": "https://moobaabaa-bot.github.io/ed-tech-opportunity/edtech-product-research/?v=48fccf3&theme=kraft-20261101"
   }
 ]
