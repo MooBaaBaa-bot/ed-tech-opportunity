@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-01",
-  "description": "Emilia AI Studio editorial interiors; independent volumes with return-to-bookshelf navigation. Homepage and content/storage preserved.",
+  "reviewedAt": "2026-11-03",
+  "description": "Reviewed date timelines for scheduled reading sections; kraft palettes, homepage, practice course, historical data and record storage preserved.",
   "files": {
-    "emilia-kraft.css": "02921bb8f78a23bae81dcd49f90319d4efc60f059e73abe918a5dc219302425f",
+    "emilia-kraft.css": "256a145a5e225d23598427ca6e7468c273cce8516f45343ddd94b6b4957e481c",
     "emilia-icons-LICENSE.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
     "hub.html": "72b15bff7c5867c76da3647b0fc0c53b399e46a77a43eb14341b22e7466a2f71",
     "index.html": "b3eebf73a0dad290d27de4d2f91697d1c0194ef615415ad3de5632b1a8e854ab",
@@ -11,7 +11,7 @@
     "ai-product-tech-practice/app.js": "828326d99242a1d47e92c25a361a84d1bb4db6d2ab48e72f7b515f38cda122d8",
     "ai-product-tech-practice/core.js": "54f604789e65a87608811a2e90564a09a7de1f343d3d85f5bd61f94eb8cfc2df",
     "edtech-product-research/style.css": "2094526a38cffdf37327db03e7a85e8469784a219b974cbaeafdf42edd0a21a1",
-    "edtech-product-research/app.js": "9fadc36b4bc3356677115325389d1c60e5ce6aec747006ef81c4595e9d1eed36",
+    "edtech-product-research/app.js": "c62a2a348fd61ddc630e6a1d8cb34894e7e5a1ebd21ba4d50eeaeed9ec0e17c4",
     "emilia-assets/weekly.webp": "8957b83f994d0651c5f54c41ec4f49a866b8fc10a56d0180f91d645e83d59e76",
     "emilia-assets/design.webp": "a77c1b6da75951fadc8053f311c12e082b2f5584b38d6df82022d6b6cc8e51d0",
     "emilia-assets/opportunities.webp": "0302f4906fb3a9fc00b58f60bd76fa85326f22ea550d15f23d3463161798286e",
@@ -19,7 +19,8 @@
     "emilia-assets/README.md": "57e3de16e0e16c70ca135d981d35be248ec3d94b6bf2f83da12cc02bf13c2556",
     "emilia-assets/practice.webp": "73205823ef3aa3ecf0e8211124adfe73c808e570c022189380d046b32107f7e9",
     "emilia-assets/library.json": "c15765f67d5b1abb7e6c15e4bdf9e7b1f681a4abdcaeec9026f5379815fde94a",
-    "scripts/check_ui.py": "80be6da49608b507dd499594be60b25f9e514f29a0e0208e7b4d8bc2cd6fb290"
+    "scripts/check_ui.py": "80be6da49608b507dd499594be60b25f9e514f29a0e0208e7b4d8bc2cd6fb290",
+    "emilia-timeline.js": "4d000303e4eea84a39f72ebeb9541d7ebecd02dcb40082f8294d664c48265255"
   },
   "pages": {
     "Ed_Tech_Opportunity.html": {
@@ -28,7 +29,7 @@
         {
           "id": "emilia-kraft-theme",
           "rel": "stylesheet",
-          "href": "emilia-kraft.css?v=20261101-studio1"
+          "href": "emilia-kraft.css?v=20261103-timeline1"
         }
       ],
       "ui_blocks": [
@@ -53,8 +54,15 @@
         ],
         [
           "script",
+          {
+            "src": "emilia-timeline.js?v=20261103-timeline1"
+          },
+          "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        ],
+        [
+          "script",
           {},
-          "48e5a745c104c53d29c5b77d854123ac31da8ceb1ac514bd9dd30b5084b20ecc"
+          "18073e079e60e938ad94c859becbb9840ddadd7896381e45ac10791e01568226"
         ]
       ],
       "navigation": [
@@ -117,7 +125,7 @@
         {
           "id": "emilia-kraft-theme",
           "rel": "stylesheet",
-          "href": "../emilia-kraft.css?v=20261101-studio1"
+          "href": "../emilia-kraft.css?v=20261103-timeline1"
         }
       ],
       "ui_blocks": [
@@ -125,7 +133,14 @@
           "script",
           {
             "type": "module",
-            "src": "app.js?v=20261101b"
+            "src": "app.js?v=20261103-timeline1"
+          },
+          "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        ],
+        [
+          "script",
+          {
+            "src": "../emilia-timeline.js?v=20261103-timeline1"
           },
           "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         ]
